@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlsq5k1nakpn3"]
+
+[ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_fpun0"]
+[ext_resource type="Texture2D" uid="uid://cw6rg4ewljj5f" path="res://textures/enemy.png" id="2_psbvm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8t7i"]
+radius = 16.0
+
+[node name="RangedEnemy" instance=ExtResource("1_fpun0")]
+
+[node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_t1lc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_psbvm")
+
+[node name="Hitbox" parent="." index="3"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_v8t7i")

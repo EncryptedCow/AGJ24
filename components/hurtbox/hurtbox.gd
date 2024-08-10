@@ -9,5 +9,6 @@ func _on_area_entered(area: Area2D) -> void:
 		var hitbox: Hitbox = area
 		print("bullet hit damageable entity")
 		hitbox.hit(self)
+		owner.queue_free()
 	else:
 		print("bullet hit terrain")

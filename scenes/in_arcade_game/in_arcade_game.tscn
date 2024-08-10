@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjwwsivojupe4"]
+[gd_scene load_steps=5 format=3 uid="uid://cjwwsivojupe4"]
 
 [ext_resource type="PackedScene" uid="uid://cejar6abbghqc" path="res://entities/player.tscn" id="1_b1t20"]
 [ext_resource type="Texture2D" uid="uid://b0sr43nexxk2s" path="res://textures/prototyping/texture_09.png" id="1_spfof"]
 [ext_resource type="Script" path="res://components/bullet_container.gd" id="3_6svrm"]
+[ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="4_gjsbj"]
 
 [node name="InArcadeGame" type="Node2D"]
 
@@ -19,3 +20,6 @@ position = Vector2(574, 327)
 
 [node name="BulletContainer" type="Node2D" parent="."]
 script = ExtResource("3_6svrm")
+
+[node name="RangedEnemy" parent="." instance=ExtResource("4_gjsbj")]
+position = Vector2(344, 246)

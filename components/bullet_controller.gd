@@ -6,4 +6,3 @@ extends Node
 
 func _process(delta: float) -> void:
 	bullet_root.position += owner.direction * speed * delta
-	

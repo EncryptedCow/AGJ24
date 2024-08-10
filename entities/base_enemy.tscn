@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://b455gke4ucqxq"]
+[gd_scene load_steps=3 format=3 uid="uid://b455gke4ucqxq"]
+
+[ext_resource type="Script" path="res://components/stats.gd" id="1_r42dx"]
+[ext_resource type="PackedScene" uid="uid://dnbew8gjthpnu" path="res://components/hitbox/hitbox.tscn" id="2_au1u0"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
+
+[node name="Stats" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_r42dx")
+hitbox = NodePath("../Hitbox")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_au1u0")]
