@@ -11,6 +11,7 @@ radius = 16.0
 radius = 16.0
 
 [node name="RangedEnemy" instance=ExtResource("1_fpun0")]
+collision_mask = 3
 
 [node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_t1lc1")
@@ -28,9 +29,13 @@ shape = SubResource("CircleShape2D_v8t7i")
 [node name="MovementTimer" type="Timer" parent="." index="4"]
 autostart = true
 
-[node name="RangedEnemyController" type="Node" parent="." index="5" node_paths=PackedStringArray("body", "move_timer")]
+[node name="RangeAttackTimer" type="Timer" parent="." index="5"]
+autostart = true
+
+[node name="RangedEnemyController" type="Node" parent="." index="6" node_paths=PackedStringArray("body", "move_timer")]
 script = ExtResource("3_iaivd")
 body = NodePath("..")
 move_timer = NodePath("../MovementTimer")
 
 [connection signal="timeout" from="MovementTimer" to="RangedEnemyController" method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="RangeAttackTimer" to="RangedEnemyController" method="_on_range_attack_timer_timeout"]

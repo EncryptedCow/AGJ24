@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbew8gjthpnu" path="res://components/hitbox/hitbox.tscn" id="2_au1u0"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
+motion_mode = 1
 
 [node name="Stats" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("1_r42dx")

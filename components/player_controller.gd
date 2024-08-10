@@ -9,6 +9,9 @@ extends Node
 var aim_pos: Vector2
 var gamepad_aiming: bool = false
 
+func _ready() -> void:
+	Global.player_character = owner
+
 func _process(delta: float) -> void:
 	if gamepad_aiming:
 		pass
