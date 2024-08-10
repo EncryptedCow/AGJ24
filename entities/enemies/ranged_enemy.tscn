@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlsq5k1nakpn3"]
+[gd_scene load_steps=6 format=3 uid="uid://dlsq5k1nakpn3"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_fpun0"]
 [ext_resource type="Texture2D" uid="uid://cw6rg4ewljj5f" path="res://textures/enemy.png" id="2_psbvm"]
+[ext_resource type="Script" path="res://components/enemy_controllers/ranged_enemy_controller.gd" id="3_iaivd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
 radius = 16.0
@@ -23,3 +24,13 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_v8t7i")
+
+[node name="MovementTimer" type="Timer" parent="." index="4"]
+autostart = true
+
+[node name="RangedEnemyController" type="Node" parent="." index="5" node_paths=PackedStringArray("body", "move_timer")]
+script = ExtResource("3_iaivd")
+body = NodePath("..")
+move_timer = NodePath("../MovementTimer")
+
+[connection signal="timeout" from="MovementTimer" to="RangedEnemyController" method="_on_movement_timer_timeout"]
