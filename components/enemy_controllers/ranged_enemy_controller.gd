@@ -28,6 +28,7 @@ enum EnemyDirection {
 }
 
 @export var body: CharacterBody2D
+@export var randomize_behaviour: bool = true
 @export var move_timer: Timer
 @export var move_speed: float = 75
 @export var idle_time_range: Vector2 = Vector2(1.0, 2.5)
@@ -54,11 +55,12 @@ func _get_enum_direction(EnumDirection) -> Vector2:
 	return movement_dir_list[EnumDirection]
 			
 func _ready():
-	print("Implementing enemy behaviour...")
-	move_type = MovementType.values().pick_random()
-	fire_type = FiringType.values().pick_random()
-	move_dir = movement_dir_list.pick_random()
-	firing_direction = EnemyDirection.values().pick_random()
+	# randomize enemy behaviour
+	if randomize_behaviour == true:
+		move_type = MovementType.values().pick_random()
+		fire_type = FiringType.values().pick_random()
+		move_dir = movement_dir_list.pick_random()
+		firing_direction = EnemyDirection.values().pick_random()
 	
 	# movement type
 	if(move_type == MovementType.RANDOM):
@@ -72,6 +74,7 @@ func _ready():
 		fire_dir = _get_enum_direction(fire_type)
 		
 
+# "bounce" off the wall using the wall's normal
 func _on_wall_collision() -> void:	
 	var wall_normal: Vector2 = body.get_wall_normal()
 	print(wall_normal)
@@ -107,11 +110,11 @@ func _on_range_attack_timer_timeout():
 		new_bullet.direction = move_dir 
 	elif(fire_type == FiringType.SHOOT_DIRECTION): # fire at specified direction
 		new_bullet.direction = fire_dir
-	elif(fire_type == FiringType.SHOOT_TOWARD_ANGLE):		
+	elif(fire_type == FiringType.SHOOT_TOWARD_ANGLE): # fire towards player	
 		var enemy_pos: Vector2 = owner.global_position
 		var player_pos: Vector2 = Global.player_character.global_position
 		new_bullet.direction = enemy_pos.direction_to(player_pos)
-	elif(fire_type == FiringType.SHOOT_TOWARD_CARDINAL):	
+	elif(fire_type == FiringType.SHOOT_TOWARD_CARDINAL): # fire towards player, to the nearest 8 directions 
 		var enemy_pos: Vector2 = owner.global_position
 		var player_pos: Vector2 = Global.player_character.global_position
 		new_bullet.direction = enemy_pos.direction_to(player_pos).round()
@@ -125,9 +128,7 @@ func _on_range_attack_timer_timeout():
 	print()
 
 func _physics_process(delta: float) -> void:
-	#if body.is_on_wall() || body.is_on_ceiling() || body.is_on_floor():
-	#	_on_wall_collision()
-		
+	
 	match move_type:
 		MovementType.RANDOM:	
 			if !is_idle:
