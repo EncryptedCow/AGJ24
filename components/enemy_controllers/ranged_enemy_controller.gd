@@ -104,6 +104,7 @@ func _on_range_attack_timer_timeout():
 	
 	var new_bullet: Bullet = Global.bullet.instantiate()
 	new_bullet.origin_entity = owner
+	new_bullet._setup_enemy_masks()
 	
 	# determine bullet's position based on firing type
 	if(fire_type == FiringType.SHOOT_FORWARD): # fire where they're moving

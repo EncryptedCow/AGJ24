@@ -20,6 +20,8 @@ shape = SubResource("CircleShape2D_t1lc1")
 texture = ExtResource("2_psbvm")
 
 [node name="Hitbox" parent="." index="3"]
+collision_layer = 8
+collision_mask = 4
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 

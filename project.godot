@@ -61,7 +61,8 @@ shoot={
 [layer_names]
 
 2d_physics/layer_2="Terrain"
-2d_physics/layer_3="Htibox"
+2d_physics/layer_3="PlayerHitbox"
+2d_physics/layer_4="EnemyHitbox"
 
 [rendering]
 
