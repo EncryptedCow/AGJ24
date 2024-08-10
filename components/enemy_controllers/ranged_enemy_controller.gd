@@ -4,7 +4,7 @@ extends Node
 
 enum MovementType {
 	RANDOM, # the direction chosen is determined randomly
-	BOUNCE, # moves the opposite direction of the wall it collided on
+	DIRECTION, # moves the opposite direction of the wall it collided on
 	PURSUE  # attempts to move towards the player
 }
 
@@ -33,7 +33,7 @@ enum EnemyDirection {
 @export var move_speed: float = 75
 @export var idle_time_range: Vector2 = Vector2(1.0, 2.5)
 @export var move_time_range: Vector2 = Vector2(1.0, 2.5)
-@export var move_type: MovementType = MovementType.BOUNCE 
+@export var move_type: MovementType = MovementType.DIRECTION 
 @export var move_direction: EnemyDirection
 @export var fire_type: FiringType = FiringType.SHOOT_FORWARD
 @export var firing_direction: EnemyDirection
@@ -67,7 +67,7 @@ func _ready():
 		move_dir = movement_dir_list.pick_random()
 	elif(move_type == MovementType.PURSUE):
 		_on_movement_timer_timeout()
-	elif(move_type == MovementType.BOUNCE):
+	elif(move_type == MovementType.DIRECTION):
 		move_dir = _get_enum_direction(move_direction)
 		
 	if(fire_type == FiringType.SHOOT_DIRECTION):
