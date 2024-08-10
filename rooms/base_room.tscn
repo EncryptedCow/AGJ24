@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw4hi63pn48mb"]
+
+[ext_resource type="TileSet" uid="uid://cptmytxwfkg2y" path="res://textures/tilesets/template_tileset.tres" id="1_i6apc"]
+
+[node name="BaseRoom" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_i6apc")
+format = 2
