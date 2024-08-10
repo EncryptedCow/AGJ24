@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b46dyuwoh0xkt"]
 
-[ext_resource type="Script" path="res://scenes/room_gen_test/room_gen_test.gd" id="1_a3rlx"]
 [ext_resource type="PackedScene" uid="uid://cejar6abbghqc" path="res://entities/player.tscn" id="2_5ig5t"]
+[ext_resource type="Script" path="res://components/room_generator.gd" id="2_wgvgb"]
 
 [node name="RoomGenTest" type="Node2D"]
-script = ExtResource("1_a3rlx")
+
+[node name="RoomGenerator" type="Node2D" parent="."]
+script = ExtResource("2_wgvgb")
 
 [node name="Player" parent="." instance=ExtResource("2_5ig5t")]
-z_index = 1
