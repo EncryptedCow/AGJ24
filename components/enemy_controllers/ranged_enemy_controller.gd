@@ -85,6 +85,9 @@ func _on_movement_timer_timeout() -> void:
 		
 # fire a projectile
 func _on_range_attack_timer_timeout():
+	if Global.player_character == null: # do not fire if the player doesn't exist
+		return
+	
 	var new_bullet: Bullet = Global.bullet.instantiate()
 	new_bullet.origin_entity = owner
 	
@@ -93,11 +96,11 @@ func _on_range_attack_timer_timeout():
 		new_bullet.direction = move_dir 
 	elif(fire_type == FiringType.SHOOT_DIRECTION): # fire at specified direction
 		new_bullet.direction = fire_dir
-	elif(fire_type == FiringType.SHOOT_TOWARD_ANGLE):
+	elif(fire_type == FiringType.SHOOT_TOWARD_ANGLE):		
 		var enemy_pos: Vector2 = owner.global_position
 		var player_pos: Vector2 = Global.player_character.global_position
 		new_bullet.direction = enemy_pos.direction_to(player_pos)
-	elif(fire_type == FiringType.SHOOT_TOWARD_CARDINAL):
+	elif(fire_type == FiringType.SHOOT_TOWARD_CARDINAL):	
 		var enemy_pos: Vector2 = owner.global_position
 		var player_pos: Vector2 = Global.player_character.global_position
 		new_bullet.direction = enemy_pos.direction_to(player_pos).round()
