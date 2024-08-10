@@ -57,7 +57,7 @@ func _ready():
 	print("Implementing enemy behaviour...")
 	move_type = MovementType.values().pick_random()
 	fire_type = FiringType.values().pick_random()
-	move_dir = movement_dir_list.pick_random()
+	move_dir = _get_enum_direction(EnemyDirection.DIRECTION_BOTTOMRIGHT) #movement_dir_list.pick_random()
 	firing_direction = EnemyDirection.values().pick_random()
 	
 	# movement type
@@ -70,9 +70,12 @@ func _ready():
 		fire_dir = _get_enum_direction(fire_type)
 		
 
-func _on_wall_collision() -> void:
-	if(move_type == MovementType.BOUNCE):
-		print("Wall Collided")
+func _on_wall_collision() -> void:	
+	var wall_normal: Vector2 = body.get_wall_normal()
+	print(wall_normal)
+	if wall_normal != null:
+		move_dir = move_dir.bounce(wall_normal)
+	else:
 		move_dir *= -1
 
 # determine new random direction based on 4 cardinal directions
@@ -114,8 +117,8 @@ func _on_range_attack_timer_timeout():
 	print()
 
 func _physics_process(delta: float) -> void:
-	if body.is_on_wall() || body.is_on_ceiling() || body.is_on_floor():
-		_on_wall_collision()
+	#if body.is_on_wall() || body.is_on_ceiling() || body.is_on_floor():
+	#	_on_wall_collision()
 		
 	match move_type:
 		MovementType.RANDOM:	
@@ -125,5 +128,9 @@ func _physics_process(delta: float) -> void:
 		MovementType.BOUNCE:
 			body.velocity = move_dir * move_speed
 			body.move_and_slide()
+			
+	if body.is_on_wall(): #|| body.is_on_ceiling() || body.is_on_floor():
+		print("Wall Collided")
+		_on_wall_collision()
 
 
