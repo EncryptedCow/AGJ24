@@ -5,7 +5,7 @@ extends Node
 enum MovementType {
 	RANDOM, # the direction chosen is determined randomly
 	BOUNCE, # moves the opposite direction of the wall it collided on
-	REFLECT # moves the opposite angle the wall's normal
+	PURSUE  # attempts to move towards the player
 }
 
 enum FiringType {
@@ -57,12 +57,14 @@ func _ready():
 	print("Implementing enemy behaviour...")
 	move_type = MovementType.values().pick_random()
 	fire_type = FiringType.values().pick_random()
-	move_dir = _get_enum_direction(EnemyDirection.DIRECTION_BOTTOMRIGHT) #movement_dir_list.pick_random()
+	move_dir = movement_dir_list.pick_random()
 	firing_direction = EnemyDirection.values().pick_random()
 	
 	# movement type
 	if(move_type == MovementType.RANDOM):
 		move_dir = movement_dir_list.pick_random()
+	elif(move_type == MovementType.PURSUE):
+		_on_movement_timer_timeout()
 	elif(move_type == MovementType.BOUNCE):
 		move_dir = _get_enum_direction(move_direction)
 		
@@ -85,6 +87,12 @@ func _on_movement_timer_timeout() -> void:
 		is_idle = !is_idle
 		move_dir = movement_dir_list.pick_random()
 		move_timer.start(randf_range(time_range.x, time_range.y))
+	elif(move_type == MovementType.PURSUE):
+		if Global.player_character == null: # do not fire if the player doesn't exist
+			return
+		var enemy_pos: Vector2 = owner.global_position
+		var player_pos: Vector2 = Global.player_character.global_position
+		move_dir = enemy_pos.direction_to(player_pos)
 		
 # fire a projectile
 func _on_range_attack_timer_timeout():
@@ -125,12 +133,12 @@ func _physics_process(delta: float) -> void:
 			if !is_idle:
 				body.velocity = move_dir * move_speed
 				body.move_and_slide()
-		MovementType.BOUNCE:
+		_:
 			body.velocity = move_dir * move_speed
 			body.move_and_slide()
 			
 	if body.is_on_wall(): #|| body.is_on_ceiling() || body.is_on_floor():
-		print("Wall Collided")
+		#print("Wall Collided")
 		_on_wall_collision()
 
 
