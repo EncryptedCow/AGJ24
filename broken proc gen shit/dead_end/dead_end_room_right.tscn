@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2q4pr3pu4rlt"]
 
-[ext_resource type="PackedScene" uid="uid://bw4hi63pn48mb" path="res://rooms/base_room.tscn" id="1_gbrli"]
+[ext_resource type="PackedScene" uid="uid://bw4hi63pn48mb" path="res://broken proc gen shit/base_room.tscn" id="1_gbrli"]
 [ext_resource type="Script" path="res://components/room_link.gd" id="2_hd3bb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ju64w"]

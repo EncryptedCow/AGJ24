@@ -6,9 +6,8 @@
 
 [node name="RoomGenTest" type="Node2D"]
 
-[node name="RoomGenerator" type="Node2D" parent="." node_paths=PackedStringArray("origin_room_link")]
+[node name="RoomGenerator" type="Node2D" parent="."]
 script = ExtResource("2_wgvgb")
-origin_room_link = NodePath("../RoomLink")
 
 [node name="Player" parent="." instance=ExtResource("2_5ig5t")]
 
