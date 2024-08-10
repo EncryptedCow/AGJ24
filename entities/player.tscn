@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://cejar6abbghqc"]
+
+[ext_resource type="Script" path="res://components/player_controller.gd" id="1_hb68l"]
+[ext_resource type="Texture2D" uid="uid://dcbvufsw0pjyr" path="res://icon.svg" id="2_yebid"]
+[ext_resource type="Script" path="res://components/hitbox.gd" id="3_pf7nc"]
+[ext_resource type="Script" path="res://components/stats.gd" id="4_8ly0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fp0rn"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p60er"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="PlayerController" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("1_hb68l")
+body = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yebid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fp0rn")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_pf7nc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_p60er")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_8ly0x")
