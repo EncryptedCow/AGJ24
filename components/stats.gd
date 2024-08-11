@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _check_successful_pickup(pickup: Node) -> void:
 	#print("Checking successful pickup...")
-	if _heal_damage(1) == true:
+	if _heal_damage(2) == true:
 		pickup.queue_free()
 		#print("Success")
 	else:
