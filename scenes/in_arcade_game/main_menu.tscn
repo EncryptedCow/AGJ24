@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ocj14pyorl"]
+
+[ext_resource type="Texture2D" uid="uid://c87i0qawgl808" path="res://textures/bullet.png" id="1_opo8f"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_right = 123.0
+offset_bottom = 24.0
+text = "NEW GAME!"
+icon = ExtResource("1_opo8f")

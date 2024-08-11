@@ -1,9 +1,60 @@
-[gd_scene load_steps=7 format=3 uid="uid://cejar6abbghqc"]
+[gd_scene load_steps=16 format=3 uid="uid://cejar6abbghqc"]
 
 [ext_resource type="Script" path="res://components/player_controller.gd" id="1_hb68l"]
+[ext_resource type="Texture2D" uid="uid://cneuc2cq2hmcb" path="res://textures/player/Player-Run.png" id="2_8cmp0"]
+[ext_resource type="Texture2D" uid="uid://stfmv051uvm6" path="res://textures/player/Player-Idle.png" id="2_ryvyb"]
 [ext_resource type="Texture2D" uid="uid://ccc5aijwqe1sw" path="res://textures/player.png" id="2_tgogk"]
 [ext_resource type="Script" path="res://components/stats.gd" id="4_8ly0x"]
 [ext_resource type="PackedScene" uid="uid://dnbew8gjthpnu" path="res://components/hitbox/hitbox.tscn" id="4_abc1a"]
+[ext_resource type="Script" path="res://components/sprite_animation.gd" id="7_laexc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_repti"]
+atlas = ExtResource("2_ryvyb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uhew"]
+atlas = ExtResource("2_8cmp0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsxgn"]
+atlas = ExtResource("2_8cmp0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d53jc"]
+atlas = ExtResource("2_8cmp0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3fmp"]
+atlas = ExtResource("2_8cmp0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_co10c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_repti")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uhew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsxgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d53jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3fmp")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_78p0s"]
 radius = 16.0
@@ -21,7 +72,12 @@ body = NodePath("..")
 camera = NodePath("../Camera2D")
 move_speed = 250.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_co10c")
+animation = &"run"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_tgogk")
 
 [node name="TerrainCollisionShape" type="CollisionShape2D" parent="."]
@@ -40,3 +96,8 @@ metadata/_edit_lock_ = true
 shape = SubResource("CircleShape2D_4u6yd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SpriteAnimation" type="Node" parent="." node_paths=PackedStringArray("body", "sprite")]
+script = ExtResource("7_laexc")
+body = NodePath("..")
+sprite = NodePath("../AnimatedSprite2D")

@@ -1,29 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlsq5k1nakpn3"]
+[gd_scene load_steps=12 format=3 uid="uid://d17emb1tkh1vo"]
 
-[ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_fpun0"]
-[ext_resource type="Texture2D" uid="uid://bdmyfr03c16ve" path="res://textures/enemies/Octorok-Sheet.png" id="2_ns7mj"]
-[ext_resource type="Script" path="res://components/sprite_animation.gd" id="3_8sbj4"]
-[ext_resource type="Script" path="res://components/enemy_controllers/ranged_enemy_controller.gd" id="3_iaivd"]
+[ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_wn5hq"]
+[ext_resource type="Texture2D" uid="uid://bmd6m0om403i4" path="res://textures/enemies/Slime-Sheet.png" id="2_ovn1w"]
+[ext_resource type="Script" path="res://components/sprite_animation.gd" id="3_xkkyq"]
+[ext_resource type="Script" path="res://components/enemy_controllers/ranged_enemy_controller.gd" id="4_4nhtk"]
+[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_wx8o0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
 radius = 16.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p2w28"]
-atlas = ExtResource("2_ns7mj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_opyes"]
+atlas = ExtResource("2_ovn1w")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4hx3"]
-atlas = ExtResource("2_ns7mj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo6hc"]
+atlas = ExtResource("2_ovn1w")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6hv8q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p2w28")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l4hx3")
+"texture": SubResource("AtlasTexture_opyes")
 }],
 "loop": true,
 "name": &"idle",
@@ -31,10 +29,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p2w28")
+"texture": SubResource("AtlasTexture_opyes")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l4hx3")
+"texture": SubResource("AtlasTexture_uo6hc")
 }],
 "loop": true,
 "name": &"run",
@@ -44,7 +42,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8t7i"]
 radius = 16.0
 
-[node name="RangedEnemy" instance=ExtResource("1_fpun0")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvjdu"]
+
+[node name="MeleeEnemy" instance=ExtResource("1_wn5hq")]
 collision_mask = 2
 
 [node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
@@ -52,10 +52,11 @@ shape = SubResource("CircleShape2D_t1lc1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_6hv8q")
-animation = &"idle"
+animation = &"run"
+frame_progress = 0.521289
 
 [node name="SpriteAnimation" type="Node" parent="." index="2" node_paths=PackedStringArray("body", "sprite")]
-script = ExtResource("3_8sbj4")
+script = ExtResource("3_xkkyq")
 body = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 
@@ -68,16 +69,20 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_v8t7i")
 
-[node name="MovementTimer" type="Timer" parent="." index="5"]
-autostart = true
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_wx8o0")
 
-[node name="RangeAttackTimer" type="Timer" parent="." index="6"]
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_tvjdu")
+
+[node name="MovementTimer" type="Timer" parent="." index="6"]
 autostart = true
 
 [node name="RangedEnemyController" type="Node" parent="." index="7" node_paths=PackedStringArray("body", "move_timer")]
-script = ExtResource("3_iaivd")
+script = ExtResource("4_4nhtk")
 body = NodePath("..")
 move_timer = NodePath("../MovementTimer")
 
 [connection signal="timeout" from="MovementTimer" to="RangedEnemyController" method="_on_movement_timer_timeout"]
-[connection signal="timeout" from="RangeAttackTimer" to="RangedEnemyController" method="_on_range_attack_timer_timeout"]
