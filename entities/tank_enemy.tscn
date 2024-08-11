@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://2qhw740hliwr"]
+
+[ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_7cpx6"]
+[ext_resource type="Script" path="res://components/enemy_controllers/tank_boss_controller.gd" id="2_2iwup"]
+[ext_resource type="Texture2D" uid="uid://6sp3quf575t5" path="res://textures/prototyping/Racecar2.png" id="3_qsd8f"]
+[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_x2h6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a3v5"]
+size = Vector2(33, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqnnf"]
+size = Vector2(33, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhxws"]
+size = Vector2(49, 25.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5ll7"]
+radius = 300.0
+
+[node name="TankBoss" node_paths=PackedStringArray("sprite", "move_timer", "range_attack_timer", "dash_attack_timer") instance=ExtResource("1_7cpx6")]
+script = ExtResource("2_2iwup")
+sprite = NodePath("Sprite2D")
+move_timer = NodePath("MovementTimer")
+range_attack_timer = NodePath("RangeAttackTimer")
+dash_attack_timer = NodePath("DashTimer")
+
+[node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_0a3v5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(3, 3)
+texture = ExtResource("3_qsd8f")
+
+[node name="Stats" parent="." index="2"]
+max_health = 20.0
+health = 20.0
+
+[node name="Hitbox" parent="." index="3"]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_pqnnf")
+
+[node name="Hurtbox" type="Area2D" parent="." index="4"]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_x2h6p")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0.5, -0.25)
+shape = SubResource("RectangleShape2D_qhxws")
+
+[node name="MovementTimer" type="Timer" parent="." index="5"]
+autostart = true
+
+[node name="RangeAttackTimer" type="Timer" parent="." index="6"]
+autostart = true
+
+[node name="DashTimer" type="Timer" parent="." index="7"]
+wait_time = 5.0
+
+[node name="Area2D" type="Area2D" parent="." index="8"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_e5ll7")
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_test_touch_hit"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="RangeAttackTimer" to="." method="_on_range_attack_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_vision_circle_entered"]
