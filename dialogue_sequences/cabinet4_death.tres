@@ -1,7 +1,40 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://cm500xefdlkf7"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=15 format=3 uid="uid://cm500xefdlkf7"]
 
+[ext_resource type="Texture2D" uid="uid://d21dtkfabg744" path="res://textures/arcade/cabinet4.png" id="1_6dpu1"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_bdbrr"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="1_bxon1"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="2_54sna"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="3_wu5lp"]
+[ext_resource type="Resource" uid="uid://c3xu2lat1ccgk" path="res://scripts/dialogue_actions/random_death_line.tres" id="4_tj53v"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="5_ynk5j"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="7_3fek6"]
+
+[sub_resource type="Resource" id="Resource_0cyir"]
+script = ExtResource("1_bxon1")
+background = ExtResource("1_6dpu1")
+
+[sub_resource type="Resource" id="Resource_h842r"]
+script = ExtResource("2_54sna")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_uh6e3"]
+script = ExtResource("2_54sna")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_ae08c"]
+script = ExtResource("3_wu5lp")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_posfx"]
+script = ExtResource("5_ynk5j")
+action_text = "<Try Again>"
+
+[sub_resource type="Resource" id="Resource_cpqph"]
+script = ExtResource("7_3fek6")
+next_scene = "res://scenes/cabinets/cabinet4/cabinet4.tscn"
 
 [resource]
 script = ExtResource("1_bdbrr")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_0cyir"), SubResource("Resource_h842r"), SubResource("Resource_uh6e3"), SubResource("Resource_ae08c"), ExtResource("4_tj53v"), SubResource("Resource_posfx"), SubResource("Resource_cpqph")])

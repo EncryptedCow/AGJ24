@@ -1,29 +1,55 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=12 format=3 uid="uid://bqqtapbyarsos"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=18 format=3 uid="uid://bqqtapbyarsos"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_gwace"]
-[ext_resource type="PackedScene" uid="uid://bdvtj4msej2sg" path="res://scenes/cabinets/cabinet3/cabinet3_overworld.tscn" id="1_leq8m"]
-[ext_resource type="Script" path="res://scripts/dialogue_actions/set_cabinet.gd" id="2_4uvf6"]
-[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="3_84owt"]
-[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="4_27jwi"]
-[ext_resource type="PackedScene" uid="uid://bkrxqud8aqptk" path="res://scenes/cabinets/cabinet3/cabinet3.tscn" id="5_tdbe2"]
-[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="6_ey6rp"]
+[ext_resource type="Texture2D" uid="uid://cpicqb8kin7l7" path="res://textures/arcade/cabinet3.png" id="1_rwpf7"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="2_giycj"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="3_ldj8f"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_chgjo"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_qlrex"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_tkk2v"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="8_6b2x6"]
 
-[sub_resource type="Resource" id="Resource_buuce"]
-script = ExtResource("2_4uvf6")
-cabinet_scene = ExtResource("1_leq8m")
+[sub_resource type="Resource" id="Resource_b1pbw"]
+script = ExtResource("2_giycj")
+background = ExtResource("1_rwpf7")
 
-[sub_resource type="Resource" id="Resource_wj47y"]
-script = ExtResource("3_84owt")
-text = "What is a king without his royal guard? Enter the Prophecy of Chris, a top down adventure game released in 1990 where you play as the heroic knight himself, Chris. In the land of the forgotten, an ancient scroll will tell the tale of how the King’s village and his people will be invaded by a faction from the northwest of the world. It is up to you to save the kingdom and bring peace to all of the land. Lots of nerds love this game so much, they even cosplay as the characters in the game, and recreate the many stories and tales of Chris’s adventures."
+[sub_resource type="Resource" id="Resource_laexp"]
+script = ExtResource("3_ldj8f")
+character = 1
+visible = false
 
-[sub_resource type="Resource" id="Resource_g21km"]
-script = ExtResource("4_27jwi")
-action_text = "You will neither confirm nor deny that at one point, you may have been one of those nerds. There’s definitely not an old prop sword still underneath your bed."
+[sub_resource type="Resource" id="Resource_sjn1p"]
+script = ExtResource("3_ldj8f")
+character = 0
+visible = true
 
-[sub_resource type="Resource" id="Resource_34wfq"]
-script = ExtResource("6_ey6rp")
-next_scene = ExtResource("5_tdbe2")
+[sub_resource type="Resource" id="Resource_nsgsh"]
+script = ExtResource("4_chgjo")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_y0823"]
+script = ExtResource("5_qlrex")
+text = "What is a king without his royal guard? Enter the Prophecy of Chris, a top down adventure game released in 1990 where you play as the heroic knight himself, Chris. In the land of the forgotten, an ancient scroll will tell the tale of how the King’s village and his people will be invaded by a faction from the northwest of the world. It is up to you to save the kingdom and bring peace to all of the land."
+
+[sub_resource type="Resource" id="Resource_r8gtk"]
+script = ExtResource("6_tkk2v")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_eepxw"]
+script = ExtResource("5_qlrex")
+text = "Lots of nerds love this game so much, they even cosplay as the characters in the game, and recreate the many stories and tales of Chris’s adventures.
+
+You will neither confirm nor deny that at one point, you may have been one of those nerds. There’s definitely not an old prop sword still underneath your bed.
+"
+
+[sub_resource type="Resource" id="Resource_jq4hi"]
+script = ExtResource("6_tkk2v")
+action_text = "<Merge>"
+
+[sub_resource type="Resource" id="Resource_ucd7u"]
+script = ExtResource("8_6b2x6")
+next_scene = "res://scenes/cabinets/cabinet3/cabinet3.tscn"
 
 [resource]
 script = ExtResource("1_gwace")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_buuce"), SubResource("Resource_wj47y"), SubResource("Resource_g21km"), SubResource("Resource_34wfq")])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_b1pbw"), SubResource("Resource_laexp"), SubResource("Resource_sjn1p"), SubResource("Resource_nsgsh"), SubResource("Resource_y0823"), SubResource("Resource_r8gtk"), SubResource("Resource_eepxw"), SubResource("Resource_jq4hi"), SubResource("Resource_ucd7u")])

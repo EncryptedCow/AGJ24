@@ -1,7 +1,40 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://5qjpnnc2k7au"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=15 format=3 uid="uid://5qjpnnc2k7au"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_mq081"]
+[ext_resource type="Texture2D" uid="uid://4sfiwkhqrdtc" path="res://textures/arcade/Cabinet1.png" id="1_s6lgn"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="2_hhgtu"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="3_4ckdt"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_mqqsf"]
+[ext_resource type="Resource" uid="uid://c3xu2lat1ccgk" path="res://scripts/dialogue_actions/random_death_line.tres" id="5_vf1we"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_ccnw3"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="8_eekun"]
+
+[sub_resource type="Resource" id="Resource_as3lk"]
+script = ExtResource("2_hhgtu")
+background = ExtResource("1_s6lgn")
+
+[sub_resource type="Resource" id="Resource_if4dk"]
+script = ExtResource("3_4ckdt")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_7wyf3"]
+script = ExtResource("3_4ckdt")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_rydyq"]
+script = ExtResource("4_mqqsf")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_dgc0p"]
+script = ExtResource("6_ccnw3")
+action_text = "<Try Again>"
+
+[sub_resource type="Resource" id="Resource_a0dxs"]
+script = ExtResource("8_eekun")
+next_scene = "res://scenes/cabinets/cabinet1/cabinet1.tscn"
 
 [resource]
 script = ExtResource("1_mq081")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_as3lk"), SubResource("Resource_if4dk"), SubResource("Resource_7wyf3"), SubResource("Resource_rydyq"), ExtResource("5_vf1we"), SubResource("Resource_dgc0p"), SubResource("Resource_a0dxs")])

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DSetTextRandom" load_steps=2 format=3 uid="uid://c3xu2lat1ccgk"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text_random.gd" id="1_64ml3"]
+
+[resource]
+resource_name = "DRandomDeathLine"
+script = ExtResource("1_64ml3")
+line_list = Array[String](["Unfortunately, the bugs squashed you.", "I'm sorry, we did really mean hordes.", "Insert coin?", "Virtual-shift technicians are facing growing rates of on job death each year.", "Unfortunately, there will never be a Player Two to help.", "Take a sick day?"])
