@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkrxqud8aqptk"]
+[gd_scene load_steps=10 format=3 uid="uid://bkrxqud8aqptk"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_6adx5"]
 [ext_resource type="TileSet" uid="uid://ba0q8ycwem8xr" path="res://scenes/cabinets/cabinet3/cabinet3_tileset.tres" id="2_lhl8m"]
 [ext_resource type="PackedScene" uid="uid://d17emb1tkh1vo" path="res://entities/enemies/melee_enemy.tscn" id="3_hndgf"]
+[ext_resource type="Script" path="res://components/treasure_group_warp.gd" id="4_80ge2"]
+[ext_resource type="PackedScene" uid="uid://sj41ax3ogkat" path="res://entities/treasure_pickup.tscn" id="5_ftyx8"]
+[ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="6_j1eb3"]
+[ext_resource type="PackedScene" uid="uid://bqra0bxw3sp24" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
 
 [sub_resource type="Gradient" id="Gradient_ips06"]
 offsets = PackedFloat32Array(0)
@@ -27,8 +31,309 @@ position = Vector2(-3.05176e-05, 0)
 scale = Vector2(1152, 656)
 texture = SubResource("GradientTexture1D_tc6tc")
 
-[node name="MeleeEnemy" parent="." index="3" instance=ExtResource("3_hndgf")]
-position = Vector2(-712, 40)
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="3"]
+offset_left = -1166.0
+offset_top = 872.0
+offset_right = -983.0
+offset_bottom = 912.0
+text = "Find *all* the Treasure!"
 
-[node name="MeleeEnemy2" parent="." index="4" instance=ExtResource("3_hndgf")]
-position = Vector2(-688, 256)
+[node name="TreasureGroup" type="Node" parent="." index="4"]
+script = ExtResource("4_80ge2")
+
+[node name="TreasurePickup" parent="TreasureGroup" index="0" instance=ExtResource("5_ftyx8")]
+position = Vector2(-162, -36)
+
+[node name="TreasurePickup2" parent="TreasureGroup" index="1" instance=ExtResource("5_ftyx8")]
+position = Vector2(-1144, -792)
+
+[node name="TreasurePickup3" parent="TreasureGroup" index="2" instance=ExtResource("5_ftyx8")]
+position = Vector2(1408, 504)
+
+[node name="TreasurePickup4" parent="TreasureGroup" index="3" instance=ExtResource("5_ftyx8")]
+position = Vector2(2321, 380)
+
+[node name="Area1" type="Node" parent="." index="5"]
+
+[node name="MeleeEnemy" parent="Area1" index="0" instance=ExtResource("3_hndgf")]
+position = Vector2(-935, 313)
+
+[node name="MeleeEnemy2" parent="Area1" index="1" instance=ExtResource("3_hndgf")]
+position = Vector2(-694, 467)
+
+[node name="RangedEnemy" parent="Area1" index="2" instance=ExtResource("6_j1eb3")]
+position = Vector2(-821, 131)
+
+[node name="RangedEnemy2" parent="Area1" index="3" instance=ExtResource("6_j1eb3")]
+position = Vector2(-608, 360)
+
+[node name="MeleeEnemy" parent="." index="6" instance=ExtResource("3_hndgf")]
+position = Vector2(-576, -864)
+
+[node name="RangedEnemyController" parent="MeleeEnemy" index="7"]
+move_type = 1
+move_direction = 1
+
+[node name="MeleeEnemy2" parent="." index="7" instance=ExtResource("3_hndgf")]
+position = Vector2(-88, -432)
+
+[node name="MeleeEnemy3" parent="." index="8" instance=ExtResource("3_hndgf")]
+position = Vector2(-8, -480)
+
+[node name="RangedEnemy" parent="." index="9" instance=ExtResource("6_j1eb3")]
+position = Vector2(-88, -344)
+
+[node name="RangedEnemy2" parent="." index="10" instance=ExtResource("6_j1eb3")]
+position = Vector2(-224, -472)
+
+[node name="RangedEnemy3" parent="." index="11" instance=ExtResource("6_j1eb3")]
+position = Vector2(-56, -584)
+
+[node name="RangedEnemy4" parent="." index="12" instance=ExtResource("6_j1eb3")]
+position = Vector2(200, -344)
+
+[node name="RangedEnemyController" parent="RangedEnemy4" index="7"]
+fire_type = 1
+firing_direction = 2
+randomize_behaviour = false
+
+[node name="RangedEnemy5" parent="." index="13" instance=ExtResource("6_j1eb3")]
+position = Vector2(488, -440)
+
+[node name="RangedEnemyController" parent="RangedEnemy5" index="7"]
+fire_type = 1
+firing_direction = 2
+randomize_behaviour = false
+
+[node name="RangedEnemy6" parent="." index="14" instance=ExtResource("6_j1eb3")]
+position = Vector2(592, -248)
+
+[node name="RangedEnemyController" parent="RangedEnemy6" index="7"]
+fire_type = 1
+firing_direction = 2
+randomize_behaviour = false
+
+[node name="RangedEnemy7" parent="." index="15" instance=ExtResource("6_j1eb3")]
+position = Vector2(824, -416)
+
+[node name="RangedEnemyController" parent="RangedEnemy7" index="7"]
+fire_type = 1
+firing_direction = 2
+randomize_behaviour = false
+
+[node name="MeleeEnemy4" parent="." index="16" instance=ExtResource("3_hndgf")]
+position = Vector2(-640, -896)
+
+[node name="RangedEnemyController" parent="MeleeEnemy4" index="7"]
+move_type = 1
+move_direction = 1
+
+[node name="MeleeEnemy5" parent="." index="17" instance=ExtResource("3_hndgf")]
+position = Vector2(-512, -832)
+
+[node name="RangedEnemyController" parent="MeleeEnemy5" index="7"]
+move_type = 1
+move_direction = 1
+
+[node name="MeleeEnemy6" parent="." index="18" instance=ExtResource("3_hndgf")]
+position = Vector2(-640, -616)
+
+[node name="RangedEnemyController" parent="MeleeEnemy6" index="7"]
+move_type = 1
+move_direction = 1
+
+[node name="MeleeEnemy7" parent="." index="19" instance=ExtResource("3_hndgf")]
+position = Vector2(-512, -592)
+
+[node name="RangedEnemyController" parent="MeleeEnemy7" index="7"]
+move_type = 1
+move_direction = 1
+
+[node name="MeleeEnemy8" parent="." index="20" instance=ExtResource("3_hndgf")]
+position = Vector2(-576, -608)
+
+[node name="RangedEnemyController" parent="MeleeEnemy8" index="7"]
+move_type = 1
+move_direction = 1
+
+[node name="MeleeEnemy9" parent="." index="21" instance=ExtResource("3_hndgf")]
+position = Vector2(1088, 72)
+
+[node name="RangedEnemyController" parent="MeleeEnemy9" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy10" parent="." index="22" instance=ExtResource("3_hndgf")]
+position = Vector2(1224, 304)
+
+[node name="RangedEnemyController" parent="MeleeEnemy10" index="7"]
+move_type = 1
+
+[node name="MeleeEnemy11" parent="." index="23" instance=ExtResource("3_hndgf")]
+position = Vector2(1272, 144)
+
+[node name="RangedEnemyController" parent="MeleeEnemy11" index="7"]
+move_type = 0
+
+[node name="RangedEnemy8" parent="." index="24" instance=ExtResource("6_j1eb3")]
+position = Vector2(1152, -824)
+
+[node name="RangedEnemy9" parent="." index="25" instance=ExtResource("6_j1eb3")]
+position = Vector2(1456, -800)
+
+[node name="RangedEnemy10" parent="." index="26" instance=ExtResource("6_j1eb3")]
+position = Vector2(1296, -736)
+
+[node name="RangedEnemy11" parent="." index="27" instance=ExtResource("6_j1eb3")]
+position = Vector2(1160, -520)
+
+[node name="RangedEnemy12" parent="." index="28" instance=ExtResource("6_j1eb3")]
+position = Vector2(1496, -560)
+
+[node name="RangedEnemy13" parent="." index="29" instance=ExtResource("6_j1eb3")]
+position = Vector2(2160, -456)
+
+[node name="RangedEnemy14" parent="." index="30" instance=ExtResource("6_j1eb3")]
+position = Vector2(1704, -88)
+
+[node name="RangedEnemy15" parent="." index="31" instance=ExtResource("6_j1eb3")]
+position = Vector2(1968, 312)
+
+[node name="RangedEnemy16" parent="." index="32" instance=ExtResource("6_j1eb3")]
+position = Vector2(2448, 64)
+
+[node name="MeleeEnemy12" parent="." index="33" instance=ExtResource("3_hndgf")]
+position = Vector2(1808, 112)
+
+[node name="RangedEnemyController" parent="MeleeEnemy12" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy13" parent="." index="34" instance=ExtResource("3_hndgf")]
+position = Vector2(2320, 248)
+
+[node name="RangedEnemyController" parent="MeleeEnemy13" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy14" parent="." index="35" instance=ExtResource("3_hndgf")]
+position = Vector2(2408, -224)
+
+[node name="RangedEnemyController" parent="MeleeEnemy14" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy15" parent="." index="36" instance=ExtResource("3_hndgf")]
+position = Vector2(1696, -344)
+
+[node name="RangedEnemyController" parent="MeleeEnemy15" index="7"]
+move_type = 0
+
+[node name="HealPickup" parent="." index="37" instance=ExtResource("7_wgmi8")]
+position = Vector2(1408, 536)
+
+[node name="HealPickup2" parent="." index="38" instance=ExtResource("7_wgmi8")]
+position = Vector2(1376, 504)
+
+[node name="HealPickup3" parent="." index="39" instance=ExtResource("7_wgmi8")]
+position = Vector2(1440, 504)
+
+[node name="HealPickup4" parent="." index="40" instance=ExtResource("7_wgmi8")]
+position = Vector2(1408, 472)
+
+[node name="HealPickup5" parent="." index="41" instance=ExtResource("7_wgmi8")]
+position = Vector2(1752, 0)
+
+[node name="HealPickup6" parent="." index="42" instance=ExtResource("7_wgmi8")]
+position = Vector2(2448, -88)
+
+[node name="HealPickup7" parent="." index="43" instance=ExtResource("7_wgmi8")]
+position = Vector2(1920, -528)
+
+[node name="HealPickup8" parent="." index="44" instance=ExtResource("7_wgmi8")]
+position = Vector2(1280, -896)
+
+[node name="HealPickup9" parent="." index="45" instance=ExtResource("7_wgmi8")]
+position = Vector2(1376, -896)
+
+[node name="HealPickup10" parent="." index="46" instance=ExtResource("7_wgmi8")]
+position = Vector2(136, 304)
+
+[node name="HealPickup11" parent="." index="47" instance=ExtResource("7_wgmi8")]
+position = Vector2(200, 256)
+
+[node name="HealPickup12" parent="." index="48" instance=ExtResource("7_wgmi8")]
+position = Vector2(-1096, -848)
+
+[node name="HealPickup13" parent="." index="49" instance=ExtResource("7_wgmi8")]
+position = Vector2(-1088, -736)
+
+[node name="MeleeEnemy16" parent="." index="50" instance=ExtResource("3_hndgf")]
+position = Vector2(-640, -760)
+
+[node name="RangedEnemyController" parent="MeleeEnemy16" index="7"]
+move_type = 1
+
+[node name="MeleeEnemy17" parent="." index="51" instance=ExtResource("3_hndgf")]
+position = Vector2(-576, -720)
+
+[node name="RangedEnemyController" parent="MeleeEnemy17" index="7"]
+move_type = 1
+
+[node name="MeleeEnemy18" parent="." index="52" instance=ExtResource("3_hndgf")]
+position = Vector2(-504, -696)
+
+[node name="RangedEnemyController" parent="MeleeEnemy18" index="7"]
+move_type = 1
+
+[node name="MeleeEnemy19" parent="." index="53" instance=ExtResource("3_hndgf")]
+position = Vector2(-952, -848)
+
+[node name="RangedEnemyController" parent="MeleeEnemy19" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy20" parent="." index="54" instance=ExtResource("3_hndgf")]
+position = Vector2(-960, -760)
+
+[node name="RangedEnemyController" parent="MeleeEnemy20" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy21" parent="." index="55" instance=ExtResource("3_hndgf")]
+position = Vector2(-888, -800)
+
+[node name="RangedEnemyController" parent="MeleeEnemy21" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy22" parent="." index="56" instance=ExtResource("3_hndgf")]
+position = Vector2(-848, -696)
+
+[node name="RangedEnemyController" parent="MeleeEnemy22" index="7"]
+move_type = 0
+
+[node name="MeleeEnemy23" parent="." index="57" instance=ExtResource("3_hndgf")]
+position = Vector2(-832, -856)
+
+[node name="RangedEnemyController" parent="MeleeEnemy23" index="7"]
+move_type = 0
+
+[editable path="MeleeEnemy"]
+[editable path="RangedEnemy4"]
+[editable path="RangedEnemy5"]
+[editable path="RangedEnemy6"]
+[editable path="RangedEnemy7"]
+[editable path="MeleeEnemy4"]
+[editable path="MeleeEnemy5"]
+[editable path="MeleeEnemy6"]
+[editable path="MeleeEnemy7"]
+[editable path="MeleeEnemy8"]
+[editable path="MeleeEnemy9"]
+[editable path="MeleeEnemy10"]
+[editable path="MeleeEnemy11"]
+[editable path="MeleeEnemy12"]
+[editable path="MeleeEnemy13"]
+[editable path="MeleeEnemy14"]
+[editable path="MeleeEnemy15"]
+[editable path="MeleeEnemy16"]
+[editable path="MeleeEnemy17"]
+[editable path="MeleeEnemy18"]
+[editable path="MeleeEnemy19"]
+[editable path="MeleeEnemy20"]
+[editable path="MeleeEnemy21"]
+[editable path="MeleeEnemy22"]
+[editable path="MeleeEnemy23"]
