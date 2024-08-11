@@ -11,8 +11,8 @@ func _ready() -> void:
 	timer = Timer.new()
 	timer.timeout.connect(_spawn_timer)
 	add_child(timer)
-	timer.start(randf_range(0.75, 1.5))
-	spawn_burst = randi_range(1, 3)
+	timer.start(randf_range(0, 0.8))
+	spawn_burst = randi_range(1, 4)
 	
 
 func _spawn_timer() -> void:
@@ -25,4 +25,4 @@ func _spawn_timer() -> void:
 		timer.start(randf_range(0.1, 0.3))
 	else:
 		timer.start(randf_range(0.75, 1.5))
-		spawn_burst = randi_range(1, 3)
+		spawn_burst = randi_range(1, 4)

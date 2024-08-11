@@ -16,3 +16,8 @@ var direction: Direction = Direction.Right:
 func _process(delta: float) -> void:
 	var dir_vec: Vector2 = Vector2.RIGHT if direction == Direction.Right else Vector2.LEFT
 	position += dir_vec * speed * delta
+
+
+func _on_area_entered(area: Area2D) -> void:
+	Global.dialogue_sequence = Global.death_dialogue
+	get_tree().change_scene_to_packed.call_deferred(Global.arcade_scene)
