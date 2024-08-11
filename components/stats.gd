@@ -10,6 +10,15 @@ signal health_changed
 
 func _ready() -> void:
 	hitbox.was_hit.connect(_take_damage)
+	hitbox.heal_picked_up.connect(_check_successful_pickup)
+
+func _check_successful_pickup(pickup: Node) -> void:
+	#print("Checking successful pickup...")
+	if _heal_damage(1) == true:
+		pickup.queue_free()
+		#print("Success")
+	else:
+		print("Fail")
 
 func _take_damage(damage: float) -> void:
 	var damage_taken: float = minf(damage, health)
@@ -21,3 +30,12 @@ func _take_damage(damage: float) -> void:
 			get_tree().change_scene_to_packed.call_deferred(Global.arcade_scene)
 		else:
 			owner.queue_free()
+
+# increase health state by specified amount, up to max_health
+# returns if health was increased successfully
+func _heal_damage(heal: float) -> bool:
+	if health < max_health:
+		health = minf(health + heal, max_health) # heal up to max_health
+		health_changed.emit()
+		return true
+	return false

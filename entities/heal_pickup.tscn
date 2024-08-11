@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqra0bxw3sp24"]
+
+[ext_resource type="Texture2D" uid="uid://bgic2n27xibcr" path="res://textures/prototyping/heart.png" id="1_30abb"]
+[ext_resource type="Script" path="res://components/healpickup.gd" id="1_754x1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqowy"]
+radius = 11.0
+
+[node name="HealPickup" type="Node2D"]
+script = ExtResource("1_754x1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_30abb")
+
+[node name="ColliderArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColliderArea2D"]
+shape = SubResource("CircleShape2D_dqowy")
+
+[connection signal="area_entered" from="ColliderArea2D" to="." method="_test_touch_hit"]
