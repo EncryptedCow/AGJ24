@@ -29,7 +29,9 @@ func _ready() -> void:
 
 # fire a projectile
 func _on_range_attack_timer_timeout() -> void:
-	if Global.player_character == null: # do not fire if the player doesn't exist
+	if entity_enabled == false: # do NOT attempt to fire if entity is disabled
+		return
+	if Global.player_character == null: # do NOT fire if the player doesn't exist
 		return
 	
 	var new_bullet: Bullet = Global.bullet.instantiate()
