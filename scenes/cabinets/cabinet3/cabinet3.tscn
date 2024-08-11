@@ -1,16 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkrxqud8aqptk"]
+[gd_scene load_steps=16 format=3 uid="uid://bkrxqud8aqptk"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_6adx5"]
 [ext_resource type="TileSet" uid="uid://ba0q8ycwem8xr" path="res://scenes/cabinets/cabinet3/cabinet3_tileset.tres" id="2_lhl8m"]
 [ext_resource type="PackedScene" uid="uid://d17emb1tkh1vo" path="res://entities/enemies/melee_enemy.tscn" id="3_hndgf"]
 [ext_resource type="Script" path="res://components/treasure_group_warp.gd" id="4_80ge2"]
 [ext_resource type="Texture2D" uid="uid://rnfxjsc724t6" path="res://textures/potion_1.png" id="5_78ii1"]
-[ext_resource type="PackedScene" uid="uid://sj41ax3ogkat" path="res://entities/treasure_pickup.tscn" id="5_ftyx8"]
+[ext_resource type="PackedScene" path="res://entities/treasure_pickup.tscn" id="5_ftyx8"]
 [ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="6_j1eb3"]
 [ext_resource type="Texture2D" uid="uid://berj24mnk3hfx" path="res://textures/key.png" id="6_kcro3"]
 [ext_resource type="Texture2D" uid="uid://cidm3bou8f0lj" path="res://textures/potion_2.png" id="7_r825n"]
-[ext_resource type="PackedScene" uid="uid://bqra0bxw3sp24" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
+[ext_resource type="PackedScene" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
 [ext_resource type="Texture2D" uid="uid://cykxax3sbeydk" path="res://textures/sword.png" id="8_xy77q"]
+[ext_resource type="Script" path="res://components/level_death_dialogue.gd" id="12_2ss4i"]
+[ext_resource type="Resource" uid="uid://clt1o0hnsyl7f" path="res://dialogue_sequences/cabinet3_death.tres" id="13_offdt"]
 
 [sub_resource type="Gradient" id="Gradient_ips06"]
 offsets = PackedFloat32Array(0)
@@ -327,6 +329,10 @@ position = Vector2(-832, -856)
 
 [node name="RangedEnemyController" parent="MeleeEnemy23" index="7"]
 move_type = 0
+
+[node name="LevelDeathDialogue" type="Node" parent="." index="58"]
+script = ExtResource("12_2ss4i")
+death_sequence = ExtResource("13_offdt")
 
 [editable path="TreasureGroup/TreasurePickup"]
 [editable path="TreasureGroup/TreasurePickup2"]
