@@ -1,2 +1,3 @@
 # Godot 4+ specific ignores
 .godot/
+scenes/in_arcade_game/TH_testarea.tscn

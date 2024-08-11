@@ -1,20 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://neqawev5tmwx"]
+[gd_scene load_steps=7 format=3 uid="uid://neqawev5tmwx"]
 
 [ext_resource type="Script" path="res://entities/bullet.gd" id="1_lj8pr"]
 [ext_resource type="Texture2D" uid="uid://c87i0qawgl808" path="res://textures/bullet.png" id="1_rttop"]
+[ext_resource type="Texture2D" uid="uid://bd6xjg6yyt1ax" path="res://textures/enemies/EnemyAttack.png" id="2_r64i5"]
 [ext_resource type="PackedScene" uid="uid://desfev1ntndus" path="res://components/hurtbox/hurtbox.tscn" id="2_rd82h"]
 [ext_resource type="Script" path="res://components/bullet_controller.gd" id="3_f6r7i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1rfe"]
 radius = 6.0
 
-[node name="Bullet" type="Node2D"]
+[node name="Bullet" type="Node2D" node_paths=PackedStringArray("hurtbox", "sprite")]
 script = ExtResource("1_lj8pr")
+hurtbox = NodePath("Hurtbox")
+sprite = NodePath("BulletSprite")
+enemyBullet = ExtResource("2_r64i5")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_rttop")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_rd82h")]
+collision_layer = 2
+collision_mask = 2
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_r1rfe")

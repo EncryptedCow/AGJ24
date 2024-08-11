@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b41c1lv3syqop"]
+
+[ext_resource type="Texture2D" uid="uid://cx3jx1800qsjc" path="res://textures/prototyping/wall1.png" id="1_uhjkc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bluvi"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bluvi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uhjkc")

@@ -9,6 +9,9 @@ extends Node
 var aim_pos: Vector2
 var gamepad_aiming: bool = false
 
+func _ready() -> void:
+	Global.player_character = owner
+
 func _process(delta: float) -> void:
 	if gamepad_aiming:
 		pass
@@ -25,7 +28,11 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		var new_bullet: Bullet = Global.bullet.instantiate()
+		
+		# set up bullet ownership
 		new_bullet.origin_entity = owner
+		new_bullet._setup_player_masks()
+		
 		new_bullet.direction = (aim_pos - owner.global_position).normalized()
 		
 		Global.bullet_container.add_child(new_bullet)
