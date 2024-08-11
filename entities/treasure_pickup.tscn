@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bx4sckvhkogh2" path="res://textures/player_temp.png" id="2_nvnmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0o6ya"]
+radius = 25.0
 
 [node name="TreasurePickup" type="Node2D"]
 script = ExtResource("1_s5o0p")
