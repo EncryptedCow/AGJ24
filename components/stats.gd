@@ -3,7 +3,7 @@ extends Node
 
 @export var hitbox: Hitbox
 
-@export var health: float = 3.0
+@export var health: float = 10.0
 
 func _ready() -> void:
 	hitbox.was_hit.connect(_take_damage)
