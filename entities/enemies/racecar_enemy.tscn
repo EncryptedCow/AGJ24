@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8hplnct4os5q"]
+[gd_scene load_steps=12 format=3 uid="uid://c8hplnct4os5q"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_k8422"]
 [ext_resource type="Texture2D" uid="uid://bmd6m0om403i4" path="res://textures/enemies/Slime-Sheet.png" id="2_th7g5"]
 [ext_resource type="Texture2D" uid="uid://6t00fotiv400" path="res://textures/enemies/Racecar.png" id="3_8xgbx"]
 [ext_resource type="Script" path="res://components/sprite_animation.gd" id="3_nmwnj"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_elhrc"]
-[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="5_mlale"]
 [ext_resource type="Script" path="res://components/enemy_controllers/ranged_enemy_controller.gd" id="5_xre61"]
-[ext_resource type="Texture2D" uid="uid://dcbvufsw0pjyr" path="res://icon.svg" id="6_f06t5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
 radius = 16.0
@@ -35,14 +33,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1w5l"]
-shader = ExtResource("5_mlale")
-shader_parameter/shake_power = 0.001
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.01
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8t7i"]
 radius = 16.0
 
@@ -67,17 +57,11 @@ script = ExtResource("3_nmwnj")
 body = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 
-[node name="Glitch" type="Sprite2D" parent="." index="3"]
-material = SubResource("ShaderMaterial_l1w5l")
-position = Vector2(0.166666, 1.5)
-scale = Vector2(0.677083, 1.15625)
-texture = ExtResource("6_f06t5")
-
-[node name="Stats" parent="." index="4"]
+[node name="Stats" parent="." index="3"]
 max_health = 999.0
 health = 999.0
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="4"]
 collision_layer = 0
 collision_mask = 4
 metadata/_edit_group_ = true
@@ -86,7 +70,7 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_v8t7i")
 
-[node name="Hurtbox" type="Area2D" parent="." index="6"]
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
 scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 4
@@ -95,10 +79,10 @@ script = ExtResource("4_elhrc")
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_n23l8")
 
-[node name="MovementTimer" type="Timer" parent="." index="7"]
+[node name="MovementTimer" type="Timer" parent="." index="6"]
 autostart = true
 
-[node name="RangedEnemyController" type="Node" parent="." index="8" node_paths=PackedStringArray("body", "move_timer")]
+[node name="RangedEnemyController" type="Node" parent="." index="7" node_paths=PackedStringArray("body", "move_timer")]
 script = ExtResource("5_xre61")
 body = NodePath("..")
 randomize_behaviour = false
