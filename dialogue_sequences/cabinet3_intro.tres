@@ -48,7 +48,6 @@ action_text = "<Merge>"
 
 [sub_resource type="Resource" id="Resource_ucd7u"]
 script = ExtResource("8_6b2x6")
-next_scene = "res://scenes/cabinets/cabinet3/cabinet3.tscn"
 
 [resource]
 script = ExtResource("1_gwace")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://sj41ax3ogkat"]
+
+[ext_resource type="Script" path="res://components/treasure_pickup.gd" id="1_s5o0p"]
+[ext_resource type="Texture2D" uid="uid://bx4sckvhkogh2" path="res://textures/player_temp.png" id="2_nvnmh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0o6ya"]
+radius = 25.0
+
+[node name="TreasurePickup" type="Node2D"]
+script = ExtResource("1_s5o0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nvnmh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_0o6ya")
+
+[connection signal="area_entered" from="Area2D" to="." method="_test_touch_hit"]

@@ -17,3 +17,7 @@ func _setup_enemy_masks() -> void:
 	hurtbox.set_collision_mask_value(3, true)
 	#var tex = load("res://textures/enemies/EnemyAttack.png")
 	sprite.play(&"enemy_bullet")
+	
+func _setup_enemy_tank() -> void:
+	_setup_enemy_masks()
+	sprite.scale = Vector2(2.0, 2.0)
