@@ -1,7 +1,75 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://c4cf5uqn8b4ql"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=23 format=3 uid="uid://c4cf5uqn8b4ql"]
 
+[ext_resource type="Texture2D" uid="uid://d21dtkfabg744" path="res://textures/arcade/cabinet4.png" id="1_glq2l"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_li4u0"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="2_e8x15"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="3_x2wfj"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_ao8xh"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_ygrhh"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_n30vk"]
+
+[sub_resource type="Resource" id="Resource_23cma"]
+script = ExtResource("2_e8x15")
+background = ExtResource("1_glq2l")
+
+[sub_resource type="Resource" id="Resource_4jykh"]
+script = ExtResource("3_x2wfj")
+character = 1
+visible = true
+
+[sub_resource type="Resource" id="Resource_8j0y2"]
+script = ExtResource("3_x2wfj")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_m4juy"]
+script = ExtResource("4_ao8xh")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_mwlys"]
+script = ExtResource("5_ygrhh")
+text = "And that’s the last of them. You think it’s a job well done. Fred’s smile says he thinks so too."
+
+[sub_resource type="Resource" id="Resource_okio7"]
+script = ExtResource("6_n30vk")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_437y7"]
+script = ExtResource("4_ao8xh")
+speaker_name = "Fred"
+
+[sub_resource type="Resource" id="Resource_ebs0r"]
+script = ExtResource("5_ygrhh")
+text = "You know, maybe I could be convinced to give you those quarters, Mr. Nice Guy."
+
+[sub_resource type="Resource" id="Resource_dvq70"]
+script = ExtResource("6_n30vk")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_nm5cd"]
+script = ExtResource("4_ao8xh")
+speaker_name = "Mike"
+
+[sub_resource type="Resource" id="Resource_nvaxo"]
+script = ExtResource("5_ygrhh")
+text = "Don’t forget the actual pay cheque."
+
+[sub_resource type="Resource" id="Resource_moify"]
+script = ExtResource("6_n30vk")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_346fy"]
+script = ExtResource("4_ao8xh")
+speaker_name = "Fred"
+
+[sub_resource type="Resource" id="Resource_saiu1"]
+script = ExtResource("5_ygrhh")
+text = "Hey, I’ll even let you pick a prize off the wall on top of that."
+
+[sub_resource type="Resource" id="Resource_8ptq2"]
+script = ExtResource("6_n30vk")
+action_text = "<Continue>"
 
 [resource]
 script = ExtResource("1_li4u0")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_23cma"), SubResource("Resource_4jykh"), SubResource("Resource_8j0y2"), SubResource("Resource_m4juy"), SubResource("Resource_mwlys"), SubResource("Resource_okio7"), SubResource("Resource_437y7"), SubResource("Resource_ebs0r"), SubResource("Resource_dvq70"), SubResource("Resource_nm5cd"), SubResource("Resource_nvaxo"), SubResource("Resource_moify"), SubResource("Resource_346fy"), SubResource("Resource_saiu1"), SubResource("Resource_8ptq2")])

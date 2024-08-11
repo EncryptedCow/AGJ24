@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjyfya6yjag6x"]
+[gd_scene load_steps=8 format=3 uid="uid://cjyfya6yjag6x"]
 
 [ext_resource type="Script" path="res://components/dialogue_sequencer.gd" id="2_erd0b"]
 [ext_resource type="Texture2D" uid="uid://boyicqhdkbpae" path="res://textures/Mike.png" id="3_iumtu"]
@@ -10,6 +10,14 @@
 font_names = PackedStringArray("Consolas")
 font_italic = true
 font_weight = 600
+
+[sub_resource type="Gradient" id="Gradient_20aqn"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cg7kx"]
+gradient = SubResource("Gradient_20aqn")
+width = 1
 
 [node name="ArcadeOverworld" type="Node"]
 
@@ -103,5 +111,13 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = SubResource("SystemFont_2ds8s")
 text = ":("
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_cg7kx")
 
 [connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/Action" to="DialogueSequencer" method="_on_action_gui_input"]
