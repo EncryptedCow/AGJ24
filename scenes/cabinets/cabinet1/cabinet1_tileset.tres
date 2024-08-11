@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cflwhrf5dk7r5"]
 
-[ext_resource type="Texture2D" uid="uid://drv808pahfyrs" path="res://scenes/cabinets/cabinet1/cabinet1_tiles.png" id="1_kshr5"]
+[ext_resource type="Texture2D" uid="uid://drv808pahfyrs" path="res://scenes/cabinets/cabinet1/cabinet1_tiles.png" id="1_0ui3o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ittab"]
-texture = ExtResource("1_kshr5")
+texture = ExtResource("1_0ui3o")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
