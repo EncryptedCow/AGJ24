@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlsq5k1nakpn3"]
+[gd_scene load_steps=11 format=3 uid="uid://dlsq5k1nakpn3"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_fpun0"]
 [ext_resource type="Texture2D" uid="uid://bdmyfr03c16ve" path="res://textures/enemies/Octorok-Sheet.png" id="2_ns7mj"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
 radius = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcc5k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2w28"]
 atlas = ExtResource("2_ns7mj")
@@ -48,11 +50,14 @@ radius = 16.0
 collision_mask = 2
 
 [node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
+visible = false
 shape = SubResource("CircleShape2D_t1lc1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_jcc5k")
 sprite_frames = SubResource("SpriteFrames_6hv8q")
 animation = &"idle"
+frame_progress = 0.406742
 
 [node name="SpriteAnimation" type="Node" parent="." index="2" node_paths=PackedStringArray("body", "sprite")]
 script = ExtResource("3_8sbj4")
@@ -60,12 +65,14 @@ body = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 
 [node name="Hitbox" parent="." index="4"]
+visible = false
 collision_layer = 8
 collision_mask = 4
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+visible = false
 shape = SubResource("CircleShape2D_v8t7i")
 
 [node name="MovementTimer" type="Timer" parent="." index="5"]

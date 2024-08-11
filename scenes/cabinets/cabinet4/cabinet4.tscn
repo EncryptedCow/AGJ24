@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bavxmgjadpbf2"]
+[gd_scene load_steps=7 format=3 uid="uid://bavxmgjadpbf2"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_p5iqx"]
 [ext_resource type="TileSet" uid="uid://bye8tkxnp114j" path="res://scenes/cabinets/cabinet4/cabinet4_tileset.tres" id="2_og8tv"]
+[ext_resource type="Script" path="res://components/level_death_dialogue.gd" id="3_dsg4l"]
+[ext_resource type="Resource" uid="uid://cm500xefdlkf7" path="res://dialogue_sequences/cabinet4_death.tres" id="4_j5152"]
 
 [sub_resource type="Gradient" id="Gradient_jp63h"]
 offsets = PackedFloat32Array(0)
@@ -24,3 +26,7 @@ position = Vector2(8, 96)
 z_index = -1
 scale = Vector2(1152, 656)
 texture = SubResource("GradientTexture1D_1t4w2")
+
+[node name="LevelDeathDialogue" type="Node" parent="." index="3"]
+script = ExtResource("3_dsg4l")
+death_sequence = ExtResource("4_j5152")
