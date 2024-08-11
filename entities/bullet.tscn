@@ -33,21 +33,21 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7ago7")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8i1f2")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lqp4t")
 }, {
-"duration": 0.3,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ec7jj")
 }],
 "loop": true,
 "name": &"wrench",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1rfe"]
@@ -61,6 +61,7 @@ sprite = NodePath("BulletSprite")
 [node name="BulletSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b51v7")
 animation = &"wrench"
+frame_progress = 0.548063
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_rd82h")]
 
