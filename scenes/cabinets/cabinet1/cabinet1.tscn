@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cflwhrf5dk7r5" path="res://scenes/cabinets/cabinet1/cabinet1_tileset.tres" id="2_k34ax"]
 [ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="3_ky6he"]
 [ext_resource type="Script" path="res://components/enemy_group_warp.gd" id="3_l5s4g"]
-[ext_resource type="PackedScene" uid="uid://cfg17vhgpw7no" path="res://entities/enemies/melee_enemy.tscn" id="4_itqtl"]
+[ext_resource type="PackedScene" uid="uid://d17emb1tkh1vo" path="res://entities/enemies/melee_enemy.tscn" id="4_itqtl"]
 [ext_resource type="PackedScene" uid="uid://eygnmgiasgg2" path="res://components/warp/warp.tscn" id="5_3inv5"]
 
 [sub_resource type="Gradient" id="Gradient_v5y0g"]
