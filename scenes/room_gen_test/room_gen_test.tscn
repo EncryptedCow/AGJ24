@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b46dyuwoh0xkt"]
+
+[ext_resource type="PackedScene" uid="uid://cejar6abbghqc" path="res://entities/player.tscn" id="2_5ig5t"]
+[ext_resource type="Script" path="res://components/room_generator.gd" id="2_wgvgb"]
+[ext_resource type="Script" path="res://components/room_link.gd" id="3_11wee"]
+
+[node name="RoomGenTest" type="Node2D"]
+
+[node name="RoomGenerator" type="Node2D" parent="." node_paths=PackedStringArray("origin_room_link")]
+script = ExtResource("2_wgvgb")
+origin_room_link = NodePath("../RoomLink")
+
+[node name="Player" parent="." instance=ExtResource("2_5ig5t")]
+
+[node name="RoomLink" type="Marker2D" parent="."]
+script = ExtResource("3_11wee")
+link_direction = 4

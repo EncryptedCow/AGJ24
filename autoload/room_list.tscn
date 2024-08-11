@@ -1,0 +1,18 @@
+[gd_scene load_steps=12 format=3 uid="uid://db2jnssbn6tw3"]
+
+[ext_resource type="Script" path="res://autoload/room_list.gd" id="1_0q7pq"]
+[ext_resource type="PackedScene" uid="uid://bgnhn175chk3d" path="res://rooms/through/through_room_bl.tscn" id="2_efgox"]
+[ext_resource type="PackedScene" uid="uid://cltacopmecf8p" path="res://rooms/dead_end/dead_end_room_up.tscn" id="2_fln6n"]
+[ext_resource type="PackedScene" uid="uid://cc5c41rev5r34" path="res://rooms/through/through_room_br.tscn" id="3_2ljcs"]
+[ext_resource type="PackedScene" uid="uid://dsk622b5ppep6" path="res://rooms/through/through_room_horizontal.tscn" id="4_b5gcu"]
+[ext_resource type="PackedScene" uid="uid://bxiwenfq30r7t" path="res://rooms/through/through_room_tl.tscn" id="5_g8ybh"]
+[ext_resource type="PackedScene" uid="uid://cdddh6wydd8dr" path="res://rooms/through/through_room_tr.tscn" id="6_0cuuk"]
+[ext_resource type="PackedScene" uid="uid://bsll303rb6vwo" path="res://rooms/through/through_room_vertical.tscn" id="7_55ak4"]
+[ext_resource type="PackedScene" uid="uid://5tm1ykckpjlh" path="res://rooms/dead_end/dead_end_room_down.tscn" id="8_mghpc"]
+[ext_resource type="PackedScene" uid="uid://ds7juiloq1nc0" path="res://rooms/dead_end/dead_end_room_left.tscn" id="9_onrp6"]
+[ext_resource type="PackedScene" uid="uid://d2q4pr3pu4rlt" path="res://rooms/dead_end/dead_end_room_right.tscn" id="10_0brnj"]
+
+[node name="RoomList" type="Node"]
+script = ExtResource("1_0q7pq")
+through_rooms = Array[PackedScene]([ExtResource("2_efgox"), ExtResource("3_2ljcs"), ExtResource("4_b5gcu"), ExtResource("5_g8ybh"), ExtResource("6_0cuuk"), ExtResource("7_55ak4")])
+dead_end_rooms = Array[PackedScene]([ExtResource("8_mghpc"), ExtResource("9_onrp6"), ExtResource("10_0brnj"), ExtResource("2_fln6n")])
