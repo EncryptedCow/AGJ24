@@ -21,6 +21,7 @@ enum EnemyDirection {
 }
 
 @export var body: CharacterBody2D
+@export var entity_enabled: bool = true # if false, enemy cannot move nor shoot
 @export var randomize_behaviour: bool = true
 @export var move_timer: Timer
 @export var move_speed: float = 75
@@ -84,15 +85,15 @@ func _on_movement_timer_timeout() -> void:
 		move_dir = enemy_pos.direction_to(player_pos)
 		
 func _physics_process(delta: float) -> void:
-	
-	match move_type:
-		MovementType.RANDOM:	
-			if !is_idle:
+	if entity_enabled:
+		match move_type:
+			MovementType.RANDOM:	
+				if !is_idle:
+					body.velocity = move_dir * move_speed
+					body.move_and_slide()
+			_:
 				body.velocity = move_dir * move_speed
 				body.move_and_slide()
-		_:
-			body.velocity = move_dir * move_speed
-			body.move_and_slide()
 			
 	if body.is_on_wall(): #|| body.is_on_ceiling() || body.is_on_floor():
 		#print("Wall Collided")

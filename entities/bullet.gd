@@ -12,7 +12,7 @@ func _setup_player_masks() -> void:
 	sprite.play(&"wrench")
 	sprite.scale = Vector2(2.0, 2.0)
 
-# set pu the masks as if the enemy owns this bullet
+# set up the masks as if the enemy owns this bullet
 func _setup_enemy_masks() -> void:
 	hurtbox.set_collision_mask_value(3, true)
 	#var tex = load("res://textures/enemies/EnemyAttack.png")
