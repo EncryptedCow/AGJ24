@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://2qhw740hliwr"]
+[gd_scene load_steps=10 format=3 uid="uid://b078yo50hok5q"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_7cpx6"]
 [ext_resource type="Script" path="res://components/enemy_controllers/tank_boss_controller.gd" id="2_2iwup"]
 [ext_resource type="Texture2D" uid="uid://6sp3quf575t5" path="res://textures/prototyping/Racecar2.png" id="3_qsd8f"]
+[ext_resource type="Texture2D" uid="uid://bmd6m0om403i4" path="res://textures/enemies/Slime-Sheet.png" id="4_5jsgv"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_x2h6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0a3v5"]
@@ -33,11 +34,17 @@ shape = SubResource("RectangleShape2D_0a3v5")
 scale = Vector2(3, 3)
 texture = ExtResource("3_qsd8f")
 
-[node name="Stats" parent="." index="2"]
+[node name="Sprite2D2" type="Sprite2D" parent="." index="2"]
+position = Vector2(-8, -8)
+scale = Vector2(1.31103, 1.31103)
+texture = ExtResource("4_5jsgv")
+hframes = 2
+
+[node name="Stats" parent="." index="3"]
 max_health = 20.0
 health = 20.0
 
-[node name="Hitbox" parent="." index="3"]
+[node name="Hitbox" parent="." index="4"]
 collision_layer = 8
 collision_mask = 4
 
@@ -45,7 +52,7 @@ collision_mask = 4
 position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_pqnnf")
 
-[node name="Hurtbox" type="Area2D" parent="." index="4"]
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
 scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 4
@@ -55,16 +62,16 @@ script = ExtResource("4_x2h6p")
 position = Vector2(0.5, -0.25)
 shape = SubResource("RectangleShape2D_qhxws")
 
-[node name="MovementTimer" type="Timer" parent="." index="5"]
+[node name="MovementTimer" type="Timer" parent="." index="6"]
 autostart = true
 
-[node name="RangeAttackTimer" type="Timer" parent="." index="6"]
+[node name="RangeAttackTimer" type="Timer" parent="." index="7"]
 autostart = true
 
-[node name="DashTimer" type="Timer" parent="." index="7"]
+[node name="DashTimer" type="Timer" parent="." index="8"]
 wait_time = 5.0
 
-[node name="Area2D" type="Area2D" parent="." index="8"]
+[node name="Area2D" type="Area2D" parent="." index="9"]
 collision_layer = 0
 collision_mask = 16
 
