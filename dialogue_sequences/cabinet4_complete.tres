@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=23 format=3 uid="uid://c4cf5uqn8b4ql"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=26 format=3 uid="uid://c4cf5uqn8b4ql"]
 
 [ext_resource type="Texture2D" uid="uid://d21dtkfabg744" path="res://textures/arcade/cabinet4.png" id="1_glq2l"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_li4u0"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_ao8xh"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_ygrhh"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_n30vk"]
+[ext_resource type="Resource" uid="uid://blwonro6jf2my" path="res://dialogue_sequences/end_game.tres" id="7_07ske"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_sequence.gd" id="8_0pnlr"]
 
 [sub_resource type="Resource" id="Resource_23cma"]
 script = ExtResource("2_e8x15")
@@ -70,6 +72,10 @@ text = "Hey, I’ll even let you pick a prize off the wall on top of that."
 script = ExtResource("6_n30vk")
 action_text = "<Continue>"
 
+[sub_resource type="Resource" id="Resource_mf7n4"]
+script = ExtResource("8_0pnlr")
+next_sequence = ExtResource("7_07ske")
+
 [resource]
 script = ExtResource("1_li4u0")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_23cma"), SubResource("Resource_4jykh"), SubResource("Resource_8j0y2"), SubResource("Resource_m4juy"), SubResource("Resource_mwlys"), SubResource("Resource_okio7"), SubResource("Resource_437y7"), SubResource("Resource_ebs0r"), SubResource("Resource_dvq70"), SubResource("Resource_nm5cd"), SubResource("Resource_nvaxo"), SubResource("Resource_moify"), SubResource("Resource_346fy"), SubResource("Resource_saiu1"), SubResource("Resource_8ptq2")])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_23cma"), SubResource("Resource_4jykh"), SubResource("Resource_8j0y2"), SubResource("Resource_m4juy"), SubResource("Resource_mwlys"), SubResource("Resource_okio7"), SubResource("Resource_437y7"), SubResource("Resource_ebs0r"), SubResource("Resource_dvq70"), SubResource("Resource_nm5cd"), SubResource("Resource_nvaxo"), SubResource("Resource_moify"), SubResource("Resource_346fy"), SubResource("Resource_saiu1"), SubResource("Resource_8ptq2"), SubResource("Resource_mf7n4")])

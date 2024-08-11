@@ -11,4 +11,6 @@ func _ready() -> void:
 func _check_children() -> void:
 	if get_child_count() == 0: # all treasure has been collected
 		print("YOU WIN!!")
+		Global.dialogue_sequence = load("res://dialogue_sequences/cabinet3_complete.tres")
+		get_tree().change_scene_to_packed.call_deferred(Global.arcade_scene)
 		#enable_warp.enable() # activate warp

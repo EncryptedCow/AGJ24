@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqra0bxw3sp24"]
+[gd_scene load_steps=4 format=3 uid="uid://dbsajt6wwlf1h"]
 
 [ext_resource type="Texture2D" uid="uid://bgic2n27xibcr" path="res://textures/prototyping/heart.png" id="1_30abb"]
 [ext_resource type="Script" path="res://components/healpickup.gd" id="1_754x1"]

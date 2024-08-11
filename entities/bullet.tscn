@@ -70,4 +70,4 @@ shape = SubResource("CircleShape2D_r1rfe")
 [node name="BulletController" type="Node" parent="." node_paths=PackedStringArray("bullet_root")]
 script = ExtResource("3_f6r7i")
 bullet_root = NodePath("..")
-speed = 400.0
+speed = 300.0

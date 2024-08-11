@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://7wscwek4dis"]
+[gd_scene load_steps=15 format=3 uid="uid://7wscwek4dis"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_hteqw"]
 [ext_resource type="TileSet" uid="uid://cflwhrf5dk7r5" path="res://scenes/cabinets/cabinet1/cabinet1_tileset.tres" id="2_k34ax"]
 [ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="3_ky6he"]
 [ext_resource type="Script" path="res://components/enemy_group_warp.gd" id="3_l5s4g"]
-[ext_resource type="PackedScene" uid="uid://cfg17vhgpw7no" path="res://entities/enemies/melee_enemy.tscn" id="4_itqtl"]
+[ext_resource type="PackedScene" uid="uid://d17emb1tkh1vo" path="res://entities/enemies/melee_enemy.tscn" id="4_itqtl"]
 [ext_resource type="Resource" uid="uid://cljwv7k8x6gia" path="res://dialogue_sequences/cabinet1_complete.tres" id="4_kdpsk"]
 [ext_resource type="PackedScene" uid="uid://eygnmgiasgg2" path="res://components/warp/warp.tscn" id="5_3inv5"]
 [ext_resource type="Script" path="res://scenes/cabinets/cabinet1/warp_pointer.gd" id="7_vgkn7"]
 [ext_resource type="Texture2D" uid="uid://cmolgwvs6lwfh" path="res://textures/warp_arrow_v2.png" id="9_uv3jn"]
 [ext_resource type="Script" path="res://components/level_death_dialogue.gd" id="10_gcp1t"]
 [ext_resource type="Resource" uid="uid://5qjpnnc2k7au" path="res://dialogue_sequences/cabinet1_death.tres" id="11_hcgpl"]
+[ext_resource type="PackedScene" uid="uid://dbsajt6wwlf1h" path="res://entities/heal_pickup.tscn" id="12_71nq1"]
 
 [sub_resource type="Gradient" id="Gradient_v5y0g"]
 offsets = PackedFloat32Array(0)
@@ -65,8 +66,7 @@ offset_top = 1840.0
 offset_right = 1554.0
 offset_bottom = 1889.0
 text = "Keep an eye on your health in the top-left.
-You may need this soon...
-(insert hp restore here)"
+You may need this soon..."
 horizontal_alignment = 1
 
 [node name="Warp1" parent="." index="3" node_paths=PackedStringArray("target", "next_enemy_group", "warp_pointer") instance=ExtResource("5_3inv5")]
@@ -103,9 +103,6 @@ warp_pointer = NodePath("../Player/WarpPointer")
 
 [node name="MeleeEnemy" parent="EnemyGroupWarp1" index="0" instance=ExtResource("4_itqtl")]
 position = Vector2(80, 56)
-
-[node name="RangedEnemyController" parent="EnemyGroupWarp1/MeleeEnemy" index="7"]
-randomize_behaviour = false
 
 [node name="EnemyGroupWarp2" type="Node" parent="." index="7" node_paths=PackedStringArray("enable_warp", "warp_pointer")]
 script = ExtResource("3_l5s4g")
@@ -168,5 +165,11 @@ texture = ExtResource("9_uv3jn")
 [node name="LevelDeathDialogue" type="Node" parent="." index="10"]
 script = ExtResource("10_gcp1t")
 death_sequence = ExtResource("11_hcgpl")
+
+[node name="HealPickup" parent="." index="12" instance=ExtResource("12_71nq1")]
+position = Vector2(1350, 1918)
+
+[node name="HealPickup2" parent="." index="13" instance=ExtResource("12_71nq1")]
+position = Vector2(1429, 1918)
 
 [editable path="EnemyGroupWarp1/MeleeEnemy"]

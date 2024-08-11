@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://43j45ctbkbw5"]
+[gd_scene load_steps=2 format=3 uid="uid://43j45ctbkbw5"]
+
+[ext_resource type="Script" path="res://scenes/end_game_credits.gd" id="1_go1fq"]
 
 [node name="EndGameCredits" type="Control"]
 layout_mode = 3
@@ -7,3 +9,55 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_go1fq")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Team
+Programming: EncryptedCow
+Art: Applepiesleth (Ronan Sandoval)
+Assistant Designer and Writer: CurtDog420 (Curtis Kornelsen)
+Writer and Additional Art: Capricious (Casey Letendre)
+
+Music
+Shred the Pavement - Skank the Summer by DavidKBD
+
+Shaders
+Realistic CRT Shader by c64cosmin
+Glitch Effect Shader for Godot Engine 4 by arlez80
+VHS Glitch by GoldBon
+"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -26.0
+offset_right = 252.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.286275)
+theme_override_font_sizes/font_size = 12
+text = "press any key to return to menu"
+vertical_alignment = 2

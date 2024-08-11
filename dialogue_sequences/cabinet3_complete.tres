@@ -1,7 +1,69 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://sjx1d3018ijy"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=23 format=3 uid="uid://sjx1d3018ijy"]
 
+[ext_resource type="Texture2D" uid="uid://cpicqb8kin7l7" path="res://textures/arcade/cabinet3.png" id="1_by4q8"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_u5yyj"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="2_kecyw"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="3_fvx7p"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_cpr5v"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_xfhr4"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_urvou"]
+[ext_resource type="Resource" uid="uid://10bgiyy71qqw" path="res://dialogue_sequences/cabinet4_intro.tres" id="7_4chl3"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_sequence.gd" id="8_mqhp4"]
+
+[sub_resource type="Resource" id="Resource_fxmfx"]
+script = ExtResource("2_kecyw")
+background = ExtResource("1_by4q8")
+
+[sub_resource type="Resource" id="Resource_s3c0s"]
+script = ExtResource("3_fvx7p")
+character = 1
+visible = true
+
+[sub_resource type="Resource" id="Resource_ct3bl"]
+script = ExtResource("3_fvx7p")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_modg5"]
+script = ExtResource("4_cpr5v")
+speaker_name = "Fred"
+
+[sub_resource type="Resource" id="Resource_fvqnq"]
+script = ExtResource("5_xfhr4")
+text = "Time for the homestretch! One more and then you’re free for the night, bud."
+
+[sub_resource type="Resource" id="Resource_xlxv1"]
+script = ExtResource("6_urvou")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_wvv3j"]
+script = ExtResource("4_cpr5v")
+speaker_name = "Mike"
+
+[sub_resource type="Resource" id="Resource_47j8h"]
+script = ExtResource("5_xfhr4")
+text = "You mean the day, since I’m being a super nice guy and working overnight for you."
+
+[sub_resource type="Resource" id="Resource_t6m8c"]
+script = ExtResource("6_urvou")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_mekf4"]
+script = ExtResource("4_cpr5v")
+speaker_name = "Fred"
+
+[sub_resource type="Resource" id="Resource_7ga33"]
+script = ExtResource("5_xfhr4")
+text = "Please, you’ll always work overnight for a friendly smile like this. That’s part of your charm."
+
+[sub_resource type="Resource" id="Resource_w3e63"]
+script = ExtResource("6_urvou")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_2j5x3"]
+script = ExtResource("8_mqhp4")
+next_sequence = ExtResource("7_4chl3")
 
 [resource]
 script = ExtResource("1_u5yyj")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_fxmfx"), SubResource("Resource_s3c0s"), SubResource("Resource_ct3bl"), SubResource("Resource_modg5"), SubResource("Resource_fvqnq"), SubResource("Resource_xlxv1"), SubResource("Resource_wvv3j"), SubResource("Resource_47j8h"), SubResource("Resource_t6m8c"), SubResource("Resource_mekf4"), SubResource("Resource_7ga33"), SubResource("Resource_w3e63"), SubResource("Resource_2j5x3")])

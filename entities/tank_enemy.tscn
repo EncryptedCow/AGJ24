@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2qhw740hliwr"]
+[gd_scene load_steps=9 format=3 uid="uid://b078yo50hok5q"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_7cpx6"]
 [ext_resource type="Script" path="res://components/enemy_controllers/tank_boss_controller.gd" id="2_2iwup"]
