@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://c8hplnct4os5q"]
+
+[ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_k8422"]
+[ext_resource type="Texture2D" uid="uid://bmd6m0om403i4" path="res://textures/enemies/Slime-Sheet.png" id="2_th7g5"]
+[ext_resource type="Texture2D" uid="uid://6t00fotiv400" path="res://textures/enemies/Racecar.png" id="3_8xgbx"]
+[ext_resource type="Script" path="res://components/sprite_animation.gd" id="3_nmwnj"]
+[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_elhrc"]
+[ext_resource type="Script" path="res://components/enemy_controllers/ranged_enemy_controller.gd" id="5_xre61"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opyes"]
+atlas = ExtResource("2_th7g5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6hv8q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opyes")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8xgbx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8t7i"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n23l8"]
+size = Vector2(10, 18)
+
+[node name="MeleeEnemy" instance=ExtResource("1_k8422")]
+scale = Vector2(3, 3)
+collision_mask = 2
+
+[node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_t1lc1")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_6hv8q")
+animation = &"run"
+frame_progress = 0.521289
+
+[node name="SpriteAnimation" type="Node" parent="." index="2" node_paths=PackedStringArray("body", "sprite")]
+script = ExtResource("3_nmwnj")
+body = NodePath("..")
+sprite = NodePath("../AnimatedSprite2D")
+
+[node name="Stats" parent="." index="3"]
+max_health = 999.0
+health = 999.0
+
+[node name="Hitbox" parent="." index="4"]
+collision_layer = 0
+collision_mask = 4
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_v8t7i")
+
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_elhrc")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_n23l8")
+
+[node name="MovementTimer" type="Timer" parent="." index="6"]
+autostart = true
+
+[node name="RangedEnemyController" type="Node" parent="." index="7" node_paths=PackedStringArray("body", "move_timer")]
+script = ExtResource("5_xre61")
+body = NodePath("..")
+randomize_behaviour = false
+move_timer = NodePath("../MovementTimer")
+move_speed = 150.0
+move_direction = 3
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_test_touch_hit"]
+[connection signal="timeout" from="MovementTimer" to="RangedEnemyController" method="_on_movement_timer_timeout"]
