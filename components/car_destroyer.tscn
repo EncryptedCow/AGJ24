@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv5ye7llc0jc7"]
+
+[ext_resource type="Script" path="res://components/car_destroyer.gd" id="1_x0qen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkjya"]
+size = Vector2(32, 5000)
+
+[node name="CarDestroyer" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_x0qen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kkjya")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

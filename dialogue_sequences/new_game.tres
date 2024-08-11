@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=26 format=3 uid="uid://drjes3q8e3vw8"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="1_aj32k"]
+[ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_qyjoe"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="2_m2ciy"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="3_5etw4"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="3_vbsfl"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="4_kso1d"]
+[ext_resource type="Resource" uid="uid://cb3tao2sjgvtc" path="res://dialogue_sequences/cabinet1_intro.tres" id="6_cqxh8"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_sequence.gd" id="7_mpfl0"]
+
+[sub_resource type="Resource" id="Resource_4sphk"]
+script = ExtResource("1_aj32k")
+
+[sub_resource type="Resource" id="Resource_myg4m"]
+script = ExtResource("3_5etw4")
+speaker_name = "Fred"
+
+[sub_resource type="Resource" id="Resource_xo4u2"]
+script = ExtResource("2_m2ciy")
+character = 1
+visible = true
+
+[sub_resource type="Resource" id="Resource_cd3p6"]
+script = ExtResource("2_m2ciy")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_llins"]
+script = ExtResource("3_vbsfl")
+text = "Why if it isn’t my favourite technician? Thanks for coming in. It’s catastrophic, I say! All the cabinets went on the fritz this afternoon."
+
+[sub_resource type="Resource" id="Resource_buhss"]
+script = ExtResource("4_kso1d")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_ogiga"]
+script = ExtResource("3_vbsfl")
+text = "Of course, it had to be on a Friday. Hope you can get them working again tonight or my whole weekend will be a wash for me."
+
+[sub_resource type="Resource" id="Resource_fxv6e"]
+script = ExtResource("4_kso1d")
+action_text = "I'll see what I can do."
+
+[sub_resource type="Resource" id="Resource_s0q6d"]
+script = ExtResource("3_5etw4")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_2r2k7"]
+script = ExtResource("2_m2ciy")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_r6d64"]
+script = ExtResource("3_vbsfl")
+text = "You step into an old but well-cared for arcade. All machines going haywire at once isn’t a simple fix, isn’t loose wires or disconnected controls."
+
+[sub_resource type="Resource" id="Resource_sqewx"]
+script = ExtResource("4_kso1d")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_xwjne"]
+script = ExtResource("3_vbsfl")
+text = "That means there’s one bad apple in the bunch, a really bad apple of a practically supernatural virus accidentally cooked up by a once overzealous compsci student, and now you gotta go clean out everything from the inside now. "
+
+[sub_resource type="Resource" id="Resource_rife6"]
+script = ExtResource("4_kso1d")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_wfj2m"]
+script = ExtResource("3_vbsfl")
+text = "Literally"
+
+[sub_resource type="Resource" id="Resource_6wpaa"]
+script = ExtResource("4_kso1d")
+action_text = "<Examine First Arcade Cabinet>"
+
+[sub_resource type="Resource" id="Resource_s0t5f"]
+script = ExtResource("7_mpfl0")
+next_sequence = ExtResource("6_cqxh8")
+
+[resource]
+script = ExtResource("1_qyjoe")
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_4sphk"), SubResource("Resource_myg4m"), SubResource("Resource_xo4u2"), SubResource("Resource_cd3p6"), SubResource("Resource_llins"), SubResource("Resource_buhss"), SubResource("Resource_ogiga"), SubResource("Resource_fxv6e"), SubResource("Resource_s0q6d"), SubResource("Resource_2r2k7"), SubResource("Resource_r6d64"), SubResource("Resource_sqewx"), SubResource("Resource_xwjne"), SubResource("Resource_rife6"), SubResource("Resource_wfj2m"), SubResource("Resource_6wpaa"), SubResource("Resource_s0t5f")])

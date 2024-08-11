@@ -1,10 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://neqawev5tmwx"]
+[gd_scene load_steps=12 format=3 uid="uid://neqawev5tmwx"]
 
 [ext_resource type="Script" path="res://entities/bullet.gd" id="1_lj8pr"]
-[ext_resource type="Texture2D" uid="uid://c87i0qawgl808" path="res://textures/bullet.png" id="1_rttop"]
-[ext_resource type="Texture2D" uid="uid://bd6xjg6yyt1ax" path="res://textures/enemies/EnemyAttack.png" id="2_r64i5"]
+[ext_resource type="Texture2D" uid="uid://bd6xjg6yyt1ax" path="res://textures/enemies/EnemyAttack.png" id="2_f0fvc"]
 [ext_resource type="PackedScene" uid="uid://desfev1ntndus" path="res://components/hurtbox/hurtbox.tscn" id="2_rd82h"]
+[ext_resource type="Texture2D" uid="uid://dd6vaywus8hmv" path="res://textures/player/Wrench-Sheet.png" id="3_dyyce"]
 [ext_resource type="Script" path="res://components/bullet_controller.gd" id="3_f6r7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ago7"]
+atlas = ExtResource("3_dyyce")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i1f2"]
+atlas = ExtResource("3_dyyce")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqp4t"]
+atlas = ExtResource("3_dyyce")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec7jj"]
+atlas = ExtResource("3_dyyce")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b51v7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f0fvc")
+}],
+"loop": true,
+"name": &"enemy_bullet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_7ago7")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_8i1f2")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_lqp4t")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_ec7jj")
+}],
+"loop": true,
+"name": &"wrench",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1rfe"]
 radius = 6.0
@@ -13,14 +57,12 @@ radius = 6.0
 script = ExtResource("1_lj8pr")
 hurtbox = NodePath("Hurtbox")
 sprite = NodePath("BulletSprite")
-enemyBullet = ExtResource("2_r64i5")
 
-[node name="BulletSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_rttop")
+[node name="BulletSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_b51v7")
+animation = &"wrench"
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_rd82h")]
-collision_layer = 2
-collision_mask = 2
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_r1rfe")

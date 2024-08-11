@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://8547s8h0c882"]
+[gd_scene load_steps=5 format=3 uid="uid://8547s8h0c882"]
 
 [ext_resource type="Script" path="res://autoload/global.gd" id="1_su28x"]
+[ext_resource type="PackedScene" uid="uid://cjyfya6yjag6x" path="res://scenes/arcade_overworld.tscn" id="2_02ygh"]
 [ext_resource type="PackedScene" uid="uid://neqawev5tmwx" path="res://entities/bullet.tscn" id="2_k7f7o"]
+[ext_resource type="PackedScene" uid="uid://cr4l7wig5ov7r" path="res://entities/car/car.tscn" id="4_luy1k"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_su28x")
+arcade_scene = ExtResource("2_02ygh")
 bullet = ExtResource("2_k7f7o")
+car = ExtResource("4_luy1k")

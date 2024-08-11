@@ -12,10 +12,10 @@ enum FiringType {
 @export var fire_type: FiringType = FiringType.SHOOT_FORWARD
 @export var firing_direction: EnemyDirection
 
-func _get_enum_direction(EnumDirection) -> Vector2:
+func _get_enum_direction(EnumDirection: int) -> Vector2:
 	return movement_dir_list[EnumDirection]
 
-func _ready():
+func _ready() -> void:
 	super()
 	
 	# randomize enemy behaviour
@@ -28,8 +28,10 @@ func _ready():
 		fire_dir = _get_enum_direction(fire_type)
 
 # fire a projectile
-func _on_range_attack_timer_timeout():
-	if Global.player_character == null: # do not fire if the player doesn't exist
+func _on_range_attack_timer_timeout() -> void:
+	if entity_enabled == false: # do NOT attempt to fire if entity is disabled
+		return
+	if Global.player_character == null: # do NOT fire if the player doesn't exist
 		return
 	
 	var new_bullet: Bullet = Global.bullet.instantiate()
@@ -56,4 +58,3 @@ func _on_range_attack_timer_timeout():
 	Global.bullet_container.add_child(new_bullet)
 	new_bullet.global_position = owner.global_position
 	
-	print()

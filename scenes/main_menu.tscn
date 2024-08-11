@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://8ocj14pyorl"]
+
+[ext_resource type="Script" path="res://components/main_menu.gd" id="1_c6t4j"]
+[ext_resource type="Texture2D" uid="uid://c87i0qawgl808" path="res://textures/bullet.png" id="1_opo8f"]
+[ext_resource type="PackedScene" uid="uid://cjyfya6yjag6x" path="res://scenes/arcade_overworld.tscn" id="2_jk1ib"]
+[ext_resource type="Texture2D" uid="uid://dcbvufsw0pjyr" path="res://icon.svg" id="4_g5j3q"]
+[ext_resource type="Texture2D" uid="uid://cx3jx1800qsjc" path="res://textures/prototyping/wall1.png" id="4_m3hja"]
+
+[sub_resource type="Animation" id="Animation_1vjkl"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/PanelContainer2/FadeOutSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_start_game"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61anq"]
+_data = {
+"fade_out": SubResource("Animation_1vjkl")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cmbw8"]
+
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("start_button", "start_animation", "quit_button")]
+script = ExtResource("1_c6t4j")
+start_button = NodePath("CanvasLayer/Control/BoxContainer/BeginButton")
+start_level = ExtResource("2_jk1ib")
+start_animation = NodePath("AnimationPlayer")
+quit_button = NodePath("CanvasLayer/Control/BoxContainer/QuitButton")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_61anq")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="BeginButton" type="Button" parent="CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+text = "BEGIN"
+icon = ExtResource("1_opo8f")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control/BoxContainer"]
+layout_mode = 2
+text = "QUIT"
+icon = ExtResource("1_opo8f")
+
+[node name="LogoSprite2D" type="Sprite2D" parent="CanvasLayer/Control/BoxContainer"]
+position = Vector2(60, -140)
+scale = Vector2(3, 3)
+texture = ExtResource("4_g5j3q")
+centered = false
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -112.0
+offset_right = -116.0
+offset_bottom = -112.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="GodotSprite2D" type="Sprite2D" parent="CanvasLayer/Control/PanelContainer"]
+position = Vector2(6, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("4_g5j3q")
+centered = false
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cmbw8")
+
+[node name="FadeOutSprite2D" type="Sprite2D" parent="CanvasLayer/Control/PanelContainer2"]
+editor_description = "This dark sprite spans the entire screen and is used in fade out animations."
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(36.1563, 20.25)
+texture = ExtResource("4_m3hja")
+centered = false

@@ -21,6 +21,7 @@ enum EnemyDirection {
 }
 
 @export var body: CharacterBody2D
+@export var entity_enabled: bool = true # if false, enemy cannot move nor shoot
 @export var randomize_behaviour: bool = true
 @export var move_timer: Timer
 @export var move_speed: float = 75
@@ -42,10 +43,10 @@ var movement_dir_list: Array[Vector2] = [
 	Vector2(1, -1).normalized() # Top right
 ]
 
-func _get_enum_direction(EnumDirection) -> Vector2:
+func _get_enum_direction(EnumDirection: int) -> Vector2:
 	return movement_dir_list[EnumDirection]
 			
-func _ready():
+func _ready() -> void:
 	# randomize enemy behaviour
 	if randomize_behaviour == true:
 		move_type = MovementType.values().pick_random()
@@ -63,7 +64,7 @@ func _ready():
 # "bounce" off the wall using the wall's normal
 func _on_wall_collision() -> void:	
 	var wall_normal: Vector2 = body.get_wall_normal()
-	print(wall_normal)
+	#print(wall_normal)
 	if wall_normal != null:
 		move_dir = move_dir.bounce(wall_normal)
 	else:
@@ -84,15 +85,15 @@ func _on_movement_timer_timeout() -> void:
 		move_dir = enemy_pos.direction_to(player_pos)
 		
 func _physics_process(delta: float) -> void:
-	
-	match move_type:
-		MovementType.RANDOM:	
-			if !is_idle:
+	if entity_enabled:
+		match move_type:
+			MovementType.RANDOM:	
+				if !is_idle:
+					body.velocity = move_dir * move_speed
+					body.move_and_slide()
+			_:
 				body.velocity = move_dir * move_speed
 				body.move_and_slide()
-		_:
-			body.velocity = move_dir * move_speed
-			body.move_and_slide()
 			
 	if body.is_on_wall(): #|| body.is_on_ceiling() || body.is_on_floor():
 		#print("Wall Collided")

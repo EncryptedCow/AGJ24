@@ -1,17 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4cphhf7fhqby"]
+[gd_scene load_steps=12 format=3 uid="uid://d17emb1tkh1vo"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_wn5hq"]
-[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="2_a442s"]
 [ext_resource type="Texture2D" uid="uid://bmd6m0om403i4" path="res://textures/enemies/Slime-Sheet.png" id="2_ovn1w"]
 [ext_resource type="Script" path="res://components/sprite_animation.gd" id="3_xkkyq"]
 [ext_resource type="Script" path="res://components/enemy_controllers/ranged_enemy_controller.gd" id="4_4nhtk"]
-[ext_resource type="Texture2D" uid="uid://dcbvufsw0pjyr" path="res://icon.svg" id="4_eyn17"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_wx8o0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1lc1"]
 radius = 16.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_id48l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opyes"]
 atlas = ExtResource("2_ovn1w")
@@ -26,6 +22,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_opyes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo6hc")
 }],
 "loop": true,
 "name": &"idle",
@@ -43,14 +42,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k38qk"]
-shader = ExtResource("2_a442s")
-shader_parameter/shake_power = 0.001
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.01
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8t7i"]
 radius = 16.0
 
@@ -60,26 +51,18 @@ radius = 16.0
 collision_mask = 2
 
 [node name="TerrainCollisionShape" type="CollisionShape2D" parent="." index="0"]
-visible = false
 shape = SubResource("CircleShape2D_t1lc1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
-material = SubResource("ShaderMaterial_id48l")
 sprite_frames = SubResource("SpriteFrames_6hv8q")
-animation = &"run"
-frame_progress = 0.621867
+animation = &"idle"
 
-[node name="Glitch" type="Sprite2D" parent="." index="2"]
-material = SubResource("ShaderMaterial_k38qk")
-texture = ExtResource("4_eyn17")
-
-[node name="SpriteAnimation" type="Node" parent="." index="3" node_paths=PackedStringArray("body", "sprite")]
+[node name="SpriteAnimation" type="Node" parent="." index="2" node_paths=PackedStringArray("body", "sprite")]
 script = ExtResource("3_xkkyq")
 body = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 
-[node name="Hitbox" parent="." index="5"]
-visible = false
+[node name="Hitbox" parent="." index="4"]
 collision_layer = 8
 collision_mask = 4
 metadata/_edit_group_ = true
@@ -88,22 +71,24 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_v8t7i")
 
-[node name="Hurtbox" type="Area2D" parent="." index="6"]
-visible = false
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
+scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("4_wx8o0")
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = false
 shape = SubResource("CircleShape2D_tvjdu")
 
-[node name="MovementTimer" type="Timer" parent="." index="7"]
+[node name="MovementTimer" type="Timer" parent="." index="6"]
 autostart = true
 
-[node name="RangedEnemyController" type="Node" parent="." index="8" node_paths=PackedStringArray("body", "move_timer")]
+[node name="RangedEnemyController" type="Node" parent="." index="7" node_paths=PackedStringArray("body", "move_timer")]
 script = ExtResource("4_4nhtk")
 body = NodePath("..")
+randomize_behaviour = false
 move_timer = NodePath("../MovementTimer")
+move_type = 2
 
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_test_touch_hit"]
 [connection signal="timeout" from="MovementTimer" to="RangedEnemyController" method="_on_movement_timer_timeout"]
