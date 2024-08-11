@@ -1,20 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjyfya6yjag6x"]
+[gd_scene load_steps=6 format=3 uid="uid://cjyfya6yjag6x"]
 
-[ext_resource type="Texture2D" uid="uid://bd0j12cpgxbio" path="res://textures/arcade/background.png" id="1_e6tmq"]
 [ext_resource type="Script" path="res://components/dialogue_sequencer.gd" id="2_erd0b"]
+[ext_resource type="Texture2D" uid="uid://boyicqhdkbpae" path="res://textures/Mike.png" id="3_iumtu"]
+[ext_resource type="Texture2D" uid="uid://dcw5h1rppas8x" path="res://textures/Fred.png" id="4_6fylx"]
+
+[sub_resource type="SystemFont" id="SystemFont_vobp1"]
+
+[sub_resource type="SystemFont" id="SystemFont_2ds8s"]
+font_names = PackedStringArray("Consolas")
+font_italic = true
+font_weight = 600
 
 [node name="ArcadeOverworld" type="Node"]
 
-[node name="DialogueSequencer" type="Node" parent="." node_paths=PackedStringArray("dialogue", "action", "cabinet_location")]
+[node name="DialogueSequencer" type="Node" parent="." node_paths=PackedStringArray("background", "dialogue", "action", "cabinet_location", "speaker_name", "mike", "fred")]
 script = ExtResource("2_erd0b")
+background = NodePath("../Background")
 dialogue = NodePath("../PanelContainer/MarginContainer/VBoxContainer/Dialogue")
 action = NodePath("../PanelContainer/MarginContainer/VBoxContainer/Action")
 cabinet_location = NodePath("../CabinetLocation")
+speaker_name = NodePath("../PanelContainer/MarginContainer/VBoxContainer/SpeakerName")
+mike = NodePath("../MikeSprite")
+fred = NodePath("../FredSprite")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 640.0
 offset_bottom = 480.0
-texture = ExtResource("1_e6tmq")
 
 [node name="CabinetLocation" type="Control" parent="."]
 layout_mode = 3
@@ -30,8 +41,18 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="MikeSprite" type="Sprite2D" parent="."]
+position = Vector2(157.5, 296.2)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_iumtu")
+
+[node name="FredSprite" type="Sprite2D" parent="."]
+position = Vector2(512, 300)
+scale = Vector2(0.341111, 0.341111)
+texture = ExtResource("4_6fylx")
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(420, 130)
+custom_minimum_size = Vector2(420, 0)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -40,9 +61,10 @@ anchor_bottom = 1.0
 offset_left = -210.0
 offset_top = -140.0
 offset_right = 210.0
-offset_bottom = -10.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -54,14 +76,32 @@ theme_override_constants/margin_bottom = 6
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="SpeakerName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Bababooie"
+
 [node name="Dialogue" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/normal_font = SubResource("SystemFont_vobp1")
+theme_override_font_sizes/normal_font_size = 14
+text = "If you're seeing this, things are broken and I'm giving up on game dev"
+fit_content = true
 
 [node name="Action" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 1
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("SystemFont_2ds8s")
+text = ":("
 
 [connection signal="gui_input" from="PanelContainer/MarginContainer/VBoxContainer/Action" to="DialogueSequencer" method="_on_action_gui_input"]

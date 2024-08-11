@@ -1,7 +1,52 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://cb3tao2sjgvtc"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=18 format=3 uid="uid://cb3tao2sjgvtc"]
 
-[ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_sf7pp"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="1_dhj7e"]
+[ext_resource type="Texture2D" uid="uid://4sfiwkhqrdtc" path="res://textures/arcade/Cabinet1.png" id="2_cvbof"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="3_jfw3c"]
+[ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="4_4fpi7"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_37c5r"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_liamq"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_xr45d"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="8_j1cc7"]
+
+[sub_resource type="Resource" id="Resource_xvdab"]
+script = ExtResource("1_dhj7e")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_tjcuj"]
+script = ExtResource("1_dhj7e")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_rb08u"]
+script = ExtResource("3_jfw3c")
+background = ExtResource("2_cvbof")
+
+[sub_resource type="Resource" id="Resource_4ew62"]
+script = ExtResource("4_37c5r")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_xqvvx"]
+script = ExtResource("5_liamq")
+text = "You know the sale’s pitch for Extra Shellestrial: “It’s a space shooter full of guns, shells, and extraterrestrials! Why guns? Cause it’s all we have to fight those pesky aliens! Created in 1980, this shooter was renowned for its state-of-the-art graphics back in the day, and is considered one of the most influential arcade machines of the 20th century. I mean, that alien looks upset, maybe pumping it full of some lead will cheer it up!”"
+
+[sub_resource type="Resource" id="Resource_744hm"]
+script = ExtResource("6_xr45d")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_a775y"]
+script = ExtResource("5_liamq")
+text = "It’s catchy, did its job, the game’s an utter hit with kids and adults alike. No matter what, it’s important to get this cabinet clean and fixed."
+
+[sub_resource type="Resource" id="Resource_eiiry"]
+script = ExtResource("6_xr45d")
+action_text = "<Merge>"
+
+[sub_resource type="Resource" id="Resource_v6jvd"]
+script = ExtResource("8_j1cc7")
+next_scene = "res://scenes/cabinets/cabinet1/cabinet1.tscn"
 
 [resource]
-script = ExtResource("1_sf7pp")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+script = ExtResource("4_4fpi7")
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_xvdab"), SubResource("Resource_tjcuj"), SubResource("Resource_rb08u"), SubResource("Resource_4ew62"), SubResource("Resource_xqvvx"), SubResource("Resource_744hm"), SubResource("Resource_a775y"), SubResource("Resource_eiiry"), SubResource("Resource_v6jvd")])

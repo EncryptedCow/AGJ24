@@ -1,7 +1,57 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://cljwv7k8x6gia"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=20 format=3 uid="uid://cljwv7k8x6gia"]
 
+[ext_resource type="Texture2D" uid="uid://4sfiwkhqrdtc" path="res://textures/arcade/Cabinet1.png" id="1_bkyxg"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_oot2x"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="2_72ump"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="3_0n1p8"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_dfwdl"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_yyppr"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_hft7i"]
+[ext_resource type="Resource" uid="uid://dqpig8ohtvjon" path="res://dialogue_sequences/cabinet2_intro.tres" id="7_tl0uu"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_sequence.gd" id="8_0lvwa"]
+
+[sub_resource type="Resource" id="Resource_rj4kt"]
+script = ExtResource("2_72ump")
+background = ExtResource("1_bkyxg")
+
+[sub_resource type="Resource" id="Resource_p2fda"]
+script = ExtResource("3_0n1p8")
+character = 1
+visible = true
+
+[sub_resource type="Resource" id="Resource_h5dfu"]
+script = ExtResource("3_0n1p8")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_ult46"]
+script = ExtResource("5_yyppr")
+text = "Fred’s still looking worried as you finish up the first cabinet."
+
+[sub_resource type="Resource" id="Resource_bj5yt"]
+script = ExtResource("4_dfwdl")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_pmck3"]
+script = ExtResource("6_hft7i")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_qckob"]
+script = ExtResource("4_dfwdl")
+speaker_name = "Fred"
+
+[sub_resource type="Resource" id="Resource_f8yuo"]
+script = ExtResource("5_yyppr")
+text = "Wonderful work as always, Mike. Truly the guy I can count on. Just a few more to go, now that you’re getting to the swing of things."
+
+[sub_resource type="Resource" id="Resource_d35im"]
+script = ExtResource("6_hft7i")
+action_text = "<Go To Next Cabinet>"
+
+[sub_resource type="Resource" id="Resource_hqow3"]
+script = ExtResource("8_0lvwa")
+next_sequence = ExtResource("7_tl0uu")
 
 [resource]
 script = ExtResource("1_oot2x")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_rj4kt"), SubResource("Resource_p2fda"), SubResource("Resource_h5dfu"), SubResource("Resource_ult46"), SubResource("Resource_bj5yt"), SubResource("Resource_pmck3"), SubResource("Resource_qckob"), SubResource("Resource_f8yuo"), SubResource("Resource_d35im"), SubResource("Resource_hqow3")])

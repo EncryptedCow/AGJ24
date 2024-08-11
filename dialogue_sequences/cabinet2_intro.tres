@@ -1,7 +1,52 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://dqpig8ohtvjon"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=18 format=3 uid="uid://dqpig8ohtvjon"]
 
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="1_6feb2"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_fygmu"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="2_m8h0b"]
+[ext_resource type="PackedScene" uid="uid://bdmervuw1jhfm" path="res://scenes/cabinets/cabinet2/cabinet2_overworld.tscn" id="3_jnxkm"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_cabinet.gd" id="4_vahvt"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_uhlvd"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_u4pgr"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="8_j3cmn"]
+
+[sub_resource type="Resource" id="Resource_5rva8"]
+script = ExtResource("1_6feb2")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_3kf68"]
+script = ExtResource("1_6feb2")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_4lpe6"]
+script = ExtResource("2_m8h0b")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_q2yad"]
+script = ExtResource("4_vahvt")
+cabinet_scene = ExtResource("3_jnxkm")
+
+[sub_resource type="Resource" id="Resource_xg6dv"]
+script = ExtResource("5_uhlvd")
+text = "Circuit Racer is a racing game released in 1985. It was the world’s first racing game on the market. The premise? Burn those wheels into first place! You play the lead role of Dale, a professional Formula 1 racer, where you take on the world's best racers and take home the gold! What’s the prize?You never figured that part out, but this game was and still is your favourite."
+
+[sub_resource type="Resource" id="Resource_ttgjh"]
+script = ExtResource("6_u4pgr")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_qr1jw"]
+script = ExtResource("5_uhlvd")
+text = "Hey, a mechanic likes mechanical things, alright?"
+
+[sub_resource type="Resource" id="Resource_vjmvm"]
+script = ExtResource("6_u4pgr")
+action_text = "<Merge>"
+
+[sub_resource type="Resource" id="Resource_fl1v0"]
+script = ExtResource("8_j3cmn")
+next_scene = "res://scenes/cabinets/cabinet2/cabinet2.tscn"
 
 [resource]
 script = ExtResource("1_fygmu")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_5rva8"), SubResource("Resource_3kf68"), SubResource("Resource_4lpe6"), SubResource("Resource_q2yad"), SubResource("Resource_xg6dv"), SubResource("Resource_ttgjh"), SubResource("Resource_qr1jw"), SubResource("Resource_vjmvm"), SubResource("Resource_fl1v0")])

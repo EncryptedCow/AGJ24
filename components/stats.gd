@@ -18,6 +18,7 @@ func _take_damage(damage: float) -> void:
 	if health <= 0:
 		print("im ded")
 		if owner == Global.player_character:
+			Global.dialogue_sequence = Global.death_dialogue
 			get_tree().change_scene_to_packed.call_deferred(Global.arcade_scene)
 		else:
 			owner.queue_free()
