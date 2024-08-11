@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogueSequence" load_steps=23 format=3 uid="uid://81rvv87ywqa4"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_216em"]
-[ext_resource type="PackedScene" uid="uid://bdmervuw1jhfm" path="res://scenes/cabinets/cabinet2/cabinet2_overworld.tscn" id="1_ngfpd"]
-[ext_resource type="Script" path="res://scripts/dialogue_actions/set_cabinet.gd" id="2_msuhu"]
+[ext_resource type="Texture2D" uid="uid://50v1byy8u52m" path="res://textures/arcade/cabinet2.png" id="1_j8ohd"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="2_haali"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="3_77hfb"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="4_41pr7"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_lafsr"]
@@ -10,9 +10,9 @@
 [ext_resource type="Resource" uid="uid://bqqtapbyarsos" path="res://dialogue_sequences/cabinet3_intro.tres" id="7_gasl4"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/change_sequence.gd" id="8_avq2j"]
 
-[sub_resource type="Resource" id="Resource_svcxm"]
-script = ExtResource("2_msuhu")
-cabinet_scene = ExtResource("1_ngfpd")
+[sub_resource type="Resource" id="Resource_hg8yc"]
+script = ExtResource("2_haali")
+background = ExtResource("1_j8ohd")
 
 [sub_resource type="Resource" id="Resource_ul8wt"]
 script = ExtResource("3_77hfb")
@@ -66,4 +66,4 @@ next_sequence = ExtResource("7_gasl4")
 
 [resource]
 script = ExtResource("1_216em")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_svcxm"), SubResource("Resource_ul8wt"), SubResource("Resource_18twh"), SubResource("Resource_4mhlf"), SubResource("Resource_auoa5"), SubResource("Resource_0ofbc"), SubResource("Resource_5817s"), SubResource("Resource_tvd5f"), SubResource("Resource_61u7t"), SubResource("Resource_hlt2c"), SubResource("Resource_gk1l0"), SubResource("Resource_38bwt"), SubResource("Resource_1peus")])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_hg8yc"), SubResource("Resource_ul8wt"), SubResource("Resource_18twh"), SubResource("Resource_4mhlf"), SubResource("Resource_auoa5"), SubResource("Resource_0ofbc"), SubResource("Resource_5817s"), SubResource("Resource_tvd5f"), SubResource("Resource_61u7t"), SubResource("Resource_hlt2c"), SubResource("Resource_gk1l0"), SubResource("Resource_38bwt"), SubResource("Resource_1peus")])

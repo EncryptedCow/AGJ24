@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="1_6feb2"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_fygmu"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="2_m8h0b"]
-[ext_resource type="PackedScene" uid="uid://bdmervuw1jhfm" path="res://scenes/cabinets/cabinet2/cabinet2_overworld.tscn" id="3_jnxkm"]
-[ext_resource type="Script" path="res://scripts/dialogue_actions/set_cabinet.gd" id="4_vahvt"]
+[ext_resource type="Texture2D" uid="uid://50v1byy8u52m" path="res://textures/arcade/cabinet2.png" id="3_6b4ed"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="4_kq3u4"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="5_uhlvd"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="6_u4pgr"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="8_j3cmn"]
@@ -23,9 +23,9 @@ visible = false
 script = ExtResource("2_m8h0b")
 speaker_name = ""
 
-[sub_resource type="Resource" id="Resource_q2yad"]
-script = ExtResource("4_vahvt")
-cabinet_scene = ExtResource("3_jnxkm")
+[sub_resource type="Resource" id="Resource_3b3mt"]
+script = ExtResource("4_kq3u4")
+background = ExtResource("3_6b4ed")
 
 [sub_resource type="Resource" id="Resource_xg6dv"]
 script = ExtResource("5_uhlvd")
@@ -49,4 +49,4 @@ next_scene = "res://scenes/cabinets/cabinet2/cabinet2.tscn"
 
 [resource]
 script = ExtResource("1_fygmu")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_5rva8"), SubResource("Resource_3kf68"), SubResource("Resource_4lpe6"), SubResource("Resource_q2yad"), SubResource("Resource_xg6dv"), SubResource("Resource_ttgjh"), SubResource("Resource_qr1jw"), SubResource("Resource_vjmvm"), SubResource("Resource_fl1v0")])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_5rva8"), SubResource("Resource_3kf68"), SubResource("Resource_4lpe6"), SubResource("Resource_3b3mt"), SubResource("Resource_xg6dv"), SubResource("Resource_ttgjh"), SubResource("Resource_qr1jw"), SubResource("Resource_vjmvm"), SubResource("Resource_fl1v0")])
