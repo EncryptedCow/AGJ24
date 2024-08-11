@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkrhulwlq84xe"]
+
+[ext_resource type="Texture2D" uid="uid://dc2aj081wh5wj" path="res://textures/arcade/cabinet_template.png" id="1_ferna"]
+
+[node name="Cabinet1Overworld" type="TextureRect"]
+offset_left = -135.0
+offset_top = -300.0
+offset_right = 135.0
+offset_bottom = 70.0
+texture = ExtResource("1_ferna")

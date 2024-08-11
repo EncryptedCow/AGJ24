@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cejar6abbghqc"]
+[gd_scene load_steps=17 format=3 uid="uid://cejar6abbghqc"]
 
 [ext_resource type="Script" path="res://components/player_controller.gd" id="1_hb68l"]
 [ext_resource type="Texture2D" uid="uid://cneuc2cq2hmcb" path="res://textures/player/Player-Run.png" id="2_8cmp0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://components/stats.gd" id="4_8ly0x"]
 [ext_resource type="PackedScene" uid="uid://dnbew8gjthpnu" path="res://components/hitbox/hitbox.tscn" id="4_abc1a"]
 [ext_resource type="Script" path="res://components/sprite_animation.gd" id="7_laexc"]
+[ext_resource type="PackedScene" uid="uid://bpua4cbor0sjt" path="res://components/player_ui/player_ui.tscn" id="8_l7fci"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_repti"]
 atlas = ExtResource("2_ryvyb")
@@ -101,3 +102,10 @@ shape = SubResource("CircleShape2D_4u6yd")
 script = ExtResource("7_laexc")
 body = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
+
+[node name="PlayerUI" parent="." node_paths=PackedStringArray("stats") instance=ExtResource("8_l7fci")]
+offset_left = -320.0
+offset_top = -240.0
+offset_right = -320.0
+offset_bottom = -240.0
+stats = NodePath("../Stats")

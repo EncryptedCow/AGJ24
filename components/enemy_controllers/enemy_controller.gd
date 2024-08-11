@@ -42,10 +42,10 @@ var movement_dir_list: Array[Vector2] = [
 	Vector2(1, -1).normalized() # Top right
 ]
 
-func _get_enum_direction(EnumDirection) -> Vector2:
+func _get_enum_direction(EnumDirection: int) -> Vector2:
 	return movement_dir_list[EnumDirection]
 			
-func _ready():
+func _ready() -> void:
 	# randomize enemy behaviour
 	if randomize_behaviour == true:
 		move_type = MovementType.values().pick_random()

@@ -6,7 +6,7 @@ extends Node
 @export var quit_button: Button
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	start_button.text = " > BEGIN <"
 	start_button.pressed.connect(self._start_button_pressed)
 	
@@ -24,6 +24,3 @@ func _start_game() -> void:
 	print("Game will begin.")
 	get_tree().change_scene_to_packed(start_level)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://cm500xefdlkf7"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_bdbrr"]
+
+[resource]
+script = ExtResource("1_bdbrr")
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])

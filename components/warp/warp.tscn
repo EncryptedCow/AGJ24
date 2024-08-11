@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://eygnmgiasgg2"]
+
+[ext_resource type="Script" path="res://components/warp/warp.gd" id="1_201iw"]
+[ext_resource type="Texture2D" uid="uid://dovwuny403slf" path="res://textures/warp.png" id="1_v8pdq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guwso"]
+size = Vector2(16, 16)
+
+[node name="Warp" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_v8pdq")
+script = ExtResource("1_201iw")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_guwso")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_player_entered"]

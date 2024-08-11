@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=12 format=3 uid="uid://drjes3q8e3vw8"]
+
+[ext_resource type="PackedScene" uid="uid://bkrhulwlq84xe" path="res://scenes/cabinets/cabinet1/cabinet1_overworld.tscn" id="1_4fqwd"]
+[ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_qyjoe"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_cabinet.gd" id="2_bgx75"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="3_vbsfl"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="4_kso1d"]
+[ext_resource type="PackedScene" uid="uid://7wscwek4dis" path="res://scenes/cabinets/cabinet1/cabinet1.tscn" id="5_rdmii"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="6_e6o3w"]
+
+[sub_resource type="Resource" id="Resource_p8wl2"]
+script = ExtResource("2_bgx75")
+cabinet_scene = ExtResource("1_4fqwd")
+
+[sub_resource type="Resource" id="Resource_llins"]
+script = ExtResource("3_vbsfl")
+text = "This is a test!"
+
+[sub_resource type="Resource" id="Resource_buhss"]
+script = ExtResource("4_kso1d")
+action_text = "press me ;)"
+
+[sub_resource type="Resource" id="Resource_a7u24"]
+script = ExtResource("6_e6o3w")
+next_scene = ExtResource("5_rdmii")
+
+[resource]
+script = ExtResource("1_qyjoe")
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_p8wl2"), SubResource("Resource_llins"), SubResource("Resource_buhss"), SubResource("Resource_a7u24")])

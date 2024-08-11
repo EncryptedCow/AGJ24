@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://components/main_menu.gd" id="1_c6t4j"]
 [ext_resource type="Texture2D" uid="uid://c87i0qawgl808" path="res://textures/bullet.png" id="1_opo8f"]
-[ext_resource type="PackedScene" uid="uid://byef88rpivmf6" path="res://scenes/in_arcade_game/TH_testarea.tscn" id="2_jk1ib"]
+[ext_resource type="PackedScene" uid="uid://cjyfya6yjag6x" path="res://scenes/arcade_overworld.tscn" id="2_jk1ib"]
 [ext_resource type="Texture2D" uid="uid://dcbvufsw0pjyr" path="res://icon.svg" id="4_g5j3q"]
 [ext_resource type="Texture2D" uid="uid://cx3jx1800qsjc" path="res://textures/prototyping/wall1.png" id="4_m3hja"]
 
