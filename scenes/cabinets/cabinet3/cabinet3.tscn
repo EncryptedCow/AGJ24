@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="6_j1eb3"]
 [ext_resource type="Texture2D" uid="uid://berj24mnk3hfx" path="res://textures/key.png" id="6_kcro3"]
 [ext_resource type="Texture2D" uid="uid://cidm3bou8f0lj" path="res://textures/potion_2.png" id="7_r825n"]
-[ext_resource type="PackedScene" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
+[ext_resource type="PackedScene" uid="uid://dbsajt6wwlf1h" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
 [ext_resource type="Texture2D" uid="uid://cykxax3sbeydk" path="res://textures/sword.png" id="8_xy77q"]
 [ext_resource type="Script" path="res://components/level_death_dialogue.gd" id="12_2ss4i"]
 [ext_resource type="Resource" uid="uid://clt1o0hnsyl7f" path="res://dialogue_sequences/cabinet3_death.tres" id="13_offdt"]
