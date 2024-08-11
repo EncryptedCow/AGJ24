@@ -55,10 +55,21 @@ func _on_range_attack_timer_timeout():
 	Global.bullet_container.add_child(new_bullet)
 	new_bullet.global_position = global_position
 	
+# "bounce" off the wall using the wall's normal
+func _on_wall_collision() -> void:	
+	var wall_normal: Vector2 = get_wall_normal()
+	#print(wall_normal)
+	move_dir *= -1
+	sprite.rotation = move_dir.angle()
+	
+	
 func _physics_process(delta: float) -> void:
 	if alerted == true:
 		velocity = move_dir * current_speed
 		move_and_slide()
+	
+		if is_on_wall(): #|| body.is_on_ceiling() || body.is_on_floor():
+			_on_wall_collision()
 
 func _on_area_vision_circle_entered(area: Area2D) -> void:
 	if alerted == false:
