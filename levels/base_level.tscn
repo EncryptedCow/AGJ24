@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwlqjvf75sjih"]
+[gd_scene load_steps=3 format=3 uid="uid://cwlqjvf75sjih"]
 
 [ext_resource type="PackedScene" uid="uid://cejar6abbghqc" path="res://entities/player.tscn" id="1_yr14i"]
+[ext_resource type="Script" path="res://components/bullet_container.gd" id="2_wi5ho"]
 
 [node name="BaseLevel" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(2, 2)
 format = 2
+
+[node name="BulletContainer" type="Node2D" parent="."]
+script = ExtResource("2_wi5ho")
 
 [node name="Player" parent="." instance=ExtResource("1_yr14i")]
