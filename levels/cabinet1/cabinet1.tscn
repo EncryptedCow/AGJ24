@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://7wscwek4dis"]
+[gd_scene load_steps=5 format=3 uid="uid://imsrnp4fhpsu"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://levels/base_level.tscn" id="1_hteqw"]
-[ext_resource type="TileSet" uid="uid://cflwhrf5dk7r5" path="res://levels/cabinet1/cabinet1_tileset.tres" id="2_k34ax"]
+[ext_resource type="TileSet" uid="uid://chuu85g71vmcj" path="res://levels/cabinet1/cabinet1_tileset.tres" id="2_k34ax"]
 
 [sub_resource type="Gradient" id="Gradient_66kme"]
 offsets = PackedFloat32Array(0)
