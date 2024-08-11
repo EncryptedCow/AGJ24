@@ -1,9 +1,13 @@
 class_name DialogueSequencer
 extends Node
 
+@export var background: TextureRect
 @export var dialogue: RichTextLabel
 @export var action: Label
 @export var cabinet_location: Control
+@export var speaker_name: Label
+@export var mike: Sprite2D
+@export var fred: Sprite2D
 
 var curr_seq: Array[DialogueAction]
 var await_input: bool = false

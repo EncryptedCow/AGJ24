@@ -1,7 +1,7 @@
 class_name DChangeScene
 extends DialogueAction
 
-@export var next_scene: PackedScene
+@export_file("*.tscn") var next_scene: String
 
 func do_action(seq: DialogueSequencer) -> void:
-	seq.get_tree().change_scene_to_packed(next_scene)
+	seq.get_tree().change_scene_to_file(next_scene)

@@ -1,7 +1,38 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=2 format=3 uid="uid://clt1o0hnsyl7f"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=14 format=3 uid="uid://clt1o0hnsyl7f"]
 
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="1_1rv7o"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_232di"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="2_k531p"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="3_wqrvs"]
+[ext_resource type="Resource" uid="uid://c3xu2lat1ccgk" path="res://scripts/dialogue_actions/random_death_line.tres" id="4_7xfup"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="5_33uuc"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/change_scene.gd" id="7_vqphk"]
+
+[sub_resource type="Resource" id="Resource_em6hk"]
+script = ExtResource("1_1rv7o")
+
+[sub_resource type="Resource" id="Resource_4pr3w"]
+script = ExtResource("2_k531p")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_hcvti"]
+script = ExtResource("2_k531p")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_kuqwr"]
+script = ExtResource("3_wqrvs")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_yugvc"]
+script = ExtResource("5_33uuc")
+action_text = "<Try Again>"
+
+[sub_resource type="Resource" id="Resource_0vhrc"]
+script = ExtResource("7_vqphk")
+next_scene = "res://scenes/cabinets/cabinet3/cabinet3.tscn"
 
 [resource]
 script = ExtResource("1_232di")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_em6hk"), SubResource("Resource_4pr3w"), SubResource("Resource_hcvti"), SubResource("Resource_kuqwr"), ExtResource("4_7xfup"), SubResource("Resource_yugvc"), SubResource("Resource_0vhrc")])
