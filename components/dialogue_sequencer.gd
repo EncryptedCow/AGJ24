@@ -1,6 +1,7 @@
 class_name DialogueSequencer
 extends Node
 
+@export var animator: AnimationPlayer
 @export var background: TextureRect
 @export var dialogue: RichTextLabel
 @export var action: Label

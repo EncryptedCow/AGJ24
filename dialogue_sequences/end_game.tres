@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueSequence" load_steps=15 format=3 uid="uid://blwonro6jf2my"]
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=17 format=3 uid="uid://blwonro6jf2my"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="1_64606"]
 [ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_i5moq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="3_57al8"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="4_0vvje"]
 [ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="5_smbob"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/play_animation.gd" id="6_lrijc"]
 
 [sub_resource type="Resource" id="Resource_kkf4g"]
 script = ExtResource("1_64606")
@@ -42,6 +43,10 @@ Time to get your high score in Circuit Breaker back."
 script = ExtResource("5_smbob")
 action_text = "<Go Home>"
 
+[sub_resource type="Resource" id="Resource_pqdks"]
+script = ExtResource("6_lrijc")
+anim_name = "fade_to_credits"
+
 [resource]
 script = ExtResource("1_i5moq")
-action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_kkf4g"), SubResource("Resource_ksacj"), SubResource("Resource_0ewfo"), SubResource("Resource_gfu4p"), SubResource("Resource_feles"), SubResource("Resource_0yox0"), SubResource("Resource_8fs4v"), SubResource("Resource_h3u3l")])
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_kkf4g"), SubResource("Resource_ksacj"), SubResource("Resource_0ewfo"), SubResource("Resource_gfu4p"), SubResource("Resource_feles"), SubResource("Resource_0yox0"), SubResource("Resource_8fs4v"), SubResource("Resource_h3u3l"), SubResource("Resource_pqdks")])
