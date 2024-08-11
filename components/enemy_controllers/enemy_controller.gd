@@ -63,7 +63,7 @@ func _ready():
 # "bounce" off the wall using the wall's normal
 func _on_wall_collision() -> void:	
 	var wall_normal: Vector2 = body.get_wall_normal()
-	print(wall_normal)
+	#print(wall_normal)
 	if wall_normal != null:
 		move_dir = move_dir.bounce(wall_normal)
 	else:

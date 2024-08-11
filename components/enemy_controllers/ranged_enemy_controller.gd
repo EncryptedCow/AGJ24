@@ -56,4 +56,3 @@ func _on_range_attack_timer_timeout():
 	Global.bullet_container.add_child(new_bullet)
 	new_bullet.global_position = owner.global_position
 	
-	print()
