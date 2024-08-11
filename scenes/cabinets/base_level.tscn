@@ -16,8 +16,8 @@ shader_parameter/grille_size = 1.194
 shader_parameter/vignette_amount = 0.6
 shader_parameter/vignette_intensity = 0.352
 shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 3.8e-07
+shader_parameter/roll_line_amount = 0.01
+shader_parameter/roll_speed = 5.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
