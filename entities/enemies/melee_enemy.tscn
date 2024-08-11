@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d17emb1tkh1vo"]
+[gd_scene load_steps=12 format=3 uid="uid://ch485laj0ddk8"]
 
 [ext_resource type="PackedScene" uid="uid://b455gke4ucqxq" path="res://entities/base_enemy.tscn" id="1_wn5hq"]
 [ext_resource type="Texture2D" uid="uid://bmd6m0om403i4" path="res://textures/enemies/Slime-Sheet.png" id="2_ovn1w"]

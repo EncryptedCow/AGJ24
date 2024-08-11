@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwlqjvf75sjih"]
+[gd_scene load_steps=5 format=3 uid="uid://cwlqjvf75sjih"]
 
 [ext_resource type="PackedScene" uid="uid://cejar6abbghqc" path="res://entities/player.tscn" id="1_yr14i"]
 [ext_resource type="Script" path="res://components/bullet_container.gd" id="2_wi5ho"]
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="3_mu3vo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60tpb"]
+shader = ExtResource("3_mu3vo")
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/scan_line_amount = 0.225
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.02
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.194
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.352
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.01
+shader_parameter/roll_speed = 5.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="BaseLevel" type="Node2D"]
 
@@ -13,3 +31,13 @@ format = 2
 script = ExtResource("2_wi5ho")
 
 [node name="Player" parent="." instance=ExtResource("1_yr14i")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_60tpb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
