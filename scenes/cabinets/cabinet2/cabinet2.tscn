@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhbgqukl0s88q"]
+
+[ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_h6w3u"]
+[ext_resource type="TileSet" uid="uid://duy2nhyqo8plr" path="res://scenes/cabinets/cabinet2/cabinet2_tileset.tres" id="2_hw3no"]
+[ext_resource type="AudioStream" uid="uid://bgxb8tucq6s7k" path="res://audio/cabinet2_bgm.ogg" id="3_gm1oy"]
+
+[sub_resource type="Gradient" id="Gradient_v2p3y"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8lb3m"]
+gradient = SubResource("Gradient_v2p3y")
+width = 1
+
+[node name="Cabinet2" instance=ExtResource("1_h6w3u")]
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource("2_hw3no")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Player" index="8"]
+z_index = -1
+scale = Vector2(1152, 656)
+texture = SubResource("GradientTexture1D_8lb3m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("3_gm1oy")
+volume_db = -10.0
+autoplay = true

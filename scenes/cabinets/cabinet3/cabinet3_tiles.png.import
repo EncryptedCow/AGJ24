@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0ywp8ahoy066"
-path="res://.godot/imported/cabinet3_tiles.png-2c49196db207de20e51bacb717899517.ctex"
+path="res://.godot/imported/cabinet3_tiles.png-f7f41d8577c49e5e3916c81902cb0534.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://levels/cabinet3/cabinet3_tiles.png"
-dest_files=["res://.godot/imported/cabinet3_tiles.png-2c49196db207de20e51bacb717899517.ctex"]
+source_file="res://scenes/cabinets/cabinet3/cabinet3_tiles.png"
+dest_files=["res://.godot/imported/cabinet3_tiles.png-f7f41d8577c49e5e3916c81902cb0534.ctex"]
 
 [params]
 
