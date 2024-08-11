@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="DialogueSequence" load_steps=15 format=3 uid="uid://blwonro6jf2my"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_background.gd" id="1_64606"]
+[ext_resource type="Script" path="res://scripts/dialogue_sequence.gd" id="1_i5moq"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_char_visible.gd" id="2_1t5hr"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_speaker.gd" id="3_57al8"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/set_text.gd" id="4_0vvje"]
+[ext_resource type="Script" path="res://scripts/dialogue_actions/wait_for_action.gd" id="5_smbob"]
+
+[sub_resource type="Resource" id="Resource_kkf4g"]
+script = ExtResource("1_64606")
+
+[sub_resource type="Resource" id="Resource_ksacj"]
+script = ExtResource("2_1t5hr")
+character = 0
+visible = true
+
+[sub_resource type="Resource" id="Resource_0ewfo"]
+script = ExtResource("2_1t5hr")
+character = 1
+visible = false
+
+[sub_resource type="Resource" id="Resource_gfu4p"]
+script = ExtResource("3_57al8")
+speaker_name = ""
+
+[sub_resource type="Resource" id="Resource_feles"]
+script = ExtResource("4_0vvje")
+text = "All those bugs gone! At least, for now. You get the feeling that the student who did this may try again. You’re not the kind of guy who prevents problems though, you’re just the guy who fixes them. You’ll be back if the kid tries something again."
+
+[sub_resource type="Resource" id="Resource_0yox0"]
+script = ExtResource("5_smbob")
+action_text = "<Continue>"
+
+[sub_resource type="Resource" id="Resource_8fs4v"]
+script = ExtResource("4_0vvje")
+text = "For now, it’s time for a nap. Maybe a large celebratory breakfast before that. Then…
+
+Time to get your high score in Circuit Breaker back."
+
+[sub_resource type="Resource" id="Resource_h3u3l"]
+script = ExtResource("5_smbob")
+action_text = "<Go Home>"
+
+[resource]
+script = ExtResource("1_i5moq")
+action_list = Array[Resource("res://scripts/dialogue_action.gd")]([SubResource("Resource_kkf4g"), SubResource("Resource_ksacj"), SubResource("Resource_0ewfo"), SubResource("Resource_gfu4p"), SubResource("Resource_feles"), SubResource("Resource_0yox0"), SubResource("Resource_8fs4v"), SubResource("Resource_h3u3l")])
