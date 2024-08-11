@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhbgqukl0s88q"]
+[gd_scene load_steps=15 format=3 uid="uid://bhbgqukl0s88q"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_h6w3u"]
 [ext_resource type="TileSet" uid="uid://duy2nhyqo8plr" path="res://scenes/cabinets/cabinet2/cabinet2_tileset.tres" id="2_hw3no"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://ey05j37u78ho" path="res://dialogue_sequences/cabinet2_death.tres" id="8_8f1xw"]
 [ext_resource type="Script" path="res://components/car_spawner.gd" id="9_yaq1u"]
 [ext_resource type="PackedScene" uid="uid://dv5ye7llc0jc7" path="res://components/car_destroyer.tscn" id="10_yyqc2"]
+[ext_resource type="Shader" path="res://shaders/glitch2.gdshader" id="11_gla2q"]
 
 [sub_resource type="Gradient" id="Gradient_v2p3y"]
 offsets = PackedFloat32Array(0)
@@ -18,6 +19,14 @@ colors = PackedColorArray(0.117647, 0.784314, 0.227451, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8lb3m"]
 gradient = SubResource("Gradient_v2p3y")
 width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ydhm"]
+shader = ExtResource("11_gla2q")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
 
 [node name="Cabinet2" instance=ExtResource("1_h6w3u")]
 
@@ -180,3 +189,11 @@ direction = 1
 [node name="CarSpawner2" type="Node2D" parent="." index="17"]
 position = Vector2(1080, -616)
 script = ExtResource("9_yaq1u")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" index="1"]
+material = SubResource("ShaderMaterial_4ydhm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

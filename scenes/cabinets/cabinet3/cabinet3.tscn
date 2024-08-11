@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bkrxqud8aqptk"]
+[gd_scene load_steps=18 format=3 uid="uid://bkrxqud8aqptk"]
 
 [ext_resource type="PackedScene" uid="uid://cwlqjvf75sjih" path="res://scenes/cabinets/base_level.tscn" id="1_6adx5"]
 [ext_resource type="TileSet" uid="uid://ba0q8ycwem8xr" path="res://scenes/cabinets/cabinet3/cabinet3_tileset.tres" id="2_lhl8m"]
@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dlsq5k1nakpn3" path="res://entities/enemies/ranged_enemy.tscn" id="6_j1eb3"]
 [ext_resource type="Texture2D" uid="uid://berj24mnk3hfx" path="res://textures/key.png" id="6_kcro3"]
 [ext_resource type="Texture2D" uid="uid://cidm3bou8f0lj" path="res://textures/potion_2.png" id="7_r825n"]
-[ext_resource type="PackedScene" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
+[ext_resource type="PackedScene" uid="uid://bqra0bxw3sp24" path="res://entities/heal_pickup.tscn" id="7_wgmi8"]
 [ext_resource type="Texture2D" uid="uid://cykxax3sbeydk" path="res://textures/sword.png" id="8_xy77q"]
 [ext_resource type="Script" path="res://components/level_death_dialogue.gd" id="12_2ss4i"]
+[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="12_j3g7a"]
 [ext_resource type="Resource" uid="uid://clt1o0hnsyl7f" path="res://dialogue_sequences/cabinet3_death.tres" id="13_offdt"]
 
 [sub_resource type="Gradient" id="Gradient_ips06"]
@@ -21,6 +22,14 @@ colors = PackedColorArray(0.117647, 0.603922, 0.2, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tc6tc"]
 gradient = SubResource("Gradient_ips06")
 width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8vsc"]
+shader = ExtResource("12_j3g7a")
+shader_parameter/range = 0.02
+shader_parameter/noiseQuality = 174.2
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.023
+shader_parameter/colorOffsetIntensity = 1.576
 
 [node name="Cabinet3" instance=ExtResource("1_6adx5")]
 
@@ -333,6 +342,14 @@ move_type = 0
 [node name="LevelDeathDialogue" type="Node" parent="." index="58"]
 script = ExtResource("12_2ss4i")
 death_sequence = ExtResource("13_offdt")
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" index="1"]
+material = SubResource("ShaderMaterial_d8vsc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [editable path="TreasureGroup/TreasurePickup"]
 [editable path="TreasureGroup/TreasurePickup2"]

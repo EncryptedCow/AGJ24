@@ -1,54 +1,49 @@
-/*
-	Glitch Effect Shader by Yui Kinomoto @arlez80
-
-	MIT License
-*/
-
 shader_type canvas_item;
 
-// 振動の強さ
-uniform float shake_power = 0.03;
-// 振動率
-uniform float shake_rate : hint_range( 0.0, 1.0 ) = 0.2;
-// 振動速度
-uniform float shake_speed = 5.0;
-// 振動ブロックサイズ
-uniform float shake_block_size = 30.5;
-// 色の分離率
-uniform float shake_color_rate : hint_range( 0.0, 1.0 ) = 0.01;
-// スクリーン
-uniform sampler2D screen_texture : hint_screen_texture;
-
-float random( float seed )
+uniform float range : hint_range(0.0, 0.1, 0.005)= 0.05;
+uniform float noiseQuality : hint_range(0.0, 300.0, 0.1)= 250.0;
+uniform float noiseIntensity : hint_range(-0.6, 0.6, 0.0010)= 0.0088;
+uniform float offsetIntensity : hint_range(-0.1, 0.1, 0.001) = 0.03;
+uniform float colorOffsetIntensity : hint_range(0.0, 5.0, 0.001) = 1.3;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+float rand(vec2 co)
 {
-	return fract( 543.2543 * sin( dot( vec2( seed, seed ), vec2( 3525.46, -54.3415 ) ) ) );
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }
 
-void fragment( )
+float verticalBar(float pos, float UVY, float offset)
 {
-	float enable_shift = float(
-		random( trunc( TIME * shake_speed ) )
-	<	shake_rate
-	);
+    float edge0 = (pos - range);
+    float edge1 = (pos + range);
 
-	vec2 fixed_uv = SCREEN_UV;
-	fixed_uv.x += (
-		random(
-			( trunc( SCREEN_UV.y * shake_block_size ) / shake_block_size )
-		+	TIME
-		) - 0.5
-	) * shake_power * enable_shift;
+    float x = smoothstep(edge0, pos, UVY) * offset;
+    x -= smoothstep(pos, edge1, UVY) * offset;
+    return x;
+}
+const float saturation = 0.2;
+void fragment()
+{
+    vec2 uv = SCREEN_UV;
+    for (float i = 0.0; i < 0.71; i += 0.1313)
+    {
+        float d = mod(TIME * i, 1.7);
+        float o = sin(1.0 - tan(TIME * 0.24 * i));
+    	o *= offsetIntensity;
+        uv.x += verticalBar(d, UV.y, o);
+    }
+    
+    float UVY = uv.y;
+    UVY *= noiseQuality;
+    UVY = float(int(UVY)) * (1.0 / noiseQuality);
+    float noise = rand(vec2(TIME * 0.00001, UVY));
+    uv.x += noise * noiseIntensity;
 
-	vec4 pixel_color = textureLod( screen_texture, fixed_uv, 0.0 );
-	pixel_color.r = mix(
-		pixel_color.r
-	,	textureLod( screen_texture, fixed_uv + vec2( shake_color_rate, 0.0 ), 0.0 ).r
-	,	enable_shift
-	);
-	pixel_color.b = mix(
-		pixel_color.b
-	,	textureLod( screen_texture, fixed_uv + vec2( -shake_color_rate, 0.0 ), 0.0 ).b
-	,	enable_shift
-	);
-	COLOR = pixel_color;
+    vec2 offsetR = vec2(0.009 * sin(TIME), 0.0) * colorOffsetIntensity;
+    vec2 offsetG = vec2(0.0073 * (cos(TIME * 0.97)), 0.0) * colorOffsetIntensity;
+    
+    float r = texture(SCREEN_TEXTURE, uv + offsetR).r;
+    float g = texture(SCREEN_TEXTURE, uv + offsetG).g;
+    float b = texture(SCREEN_TEXTURE, uv).b;
+    vec4 tex = vec4(r, g, b, 1.0);
+    COLOR = tex;
 }
